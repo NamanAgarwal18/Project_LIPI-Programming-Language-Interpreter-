@@ -11,14 +11,14 @@
 * There are no boolean values in Lipi, so ```True``` and ```False``` are represented as ```1``` and ```0``` respectively.
   ```
   # Wrong Declaration
-  int $number1 = 20
-  number2 = 20
-  $name = Naman
-  $boolValue = True
+    int $number1 = 20
+    number2 = 20
+    $name = Naman
+    $boolValue = True
   
   # Right Declaration
-  $number2 = 20
-  $name = "Naman"
-  $name = 30.52
-  $boolValue = 1
+    $number2 = 20
+    $name = "Naman"
+    $name = 30.52
+    $boolValue = 1
   ```
