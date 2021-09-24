@@ -25,3 +25,7 @@
       $boolValue = 1
       $number3 = $name * ( $number1 + 30 )
   ```
+  variable-declaration::= variable-name assignment-operator variable-body
+  variable-name::= identifier
+  assignment-operator::= "="
+  variable-body::= constant | expression | comparison
