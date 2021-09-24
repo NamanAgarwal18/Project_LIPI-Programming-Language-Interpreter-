@@ -5,7 +5,20 @@
 
 ## Language Grammar
 ### 1. Variable Declaration:
-* All variables start with a ```$``` symbol. For example:
+* There is no need to specify the data type.
+* All variables start with a ```$``` symbol. 
+* A variable can hold a ```int```, ```double``` or a ```string```.
+* There are no boolean values in Lipi, so ```True``` and ```False``` are represented as ```1``` and ```0``` respectively.
   ```
-  name = 20
+  # Wrong Declaration
+  int $number1 = 20
+  number2 = 20
+  $name = Naman
+  $boolValue = True
+  
+  # Right Declaration
+  $number2 = 20
+  $name = "Naman"
+  $name = 30.52
+  $boolValue = 1
   ```
