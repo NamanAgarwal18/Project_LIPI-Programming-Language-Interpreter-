@@ -17,7 +17,8 @@
       $name = Naman
       $boolValue = True
       $number3 = $name*($number1+30)
-      
+  ```
+  ```java
   # Right Declaration
       $number2 = 20
       $name = "Naman"
@@ -25,9 +26,9 @@
       $boolValue = 1
       $number3 = $name * ( $number1 + 30 )
   ```
-```
-  variable-declaration::= variable-name assignment-operator variable-body
-  variable-name::= identifier
-  assignment-operator::= "="
-  variable-body::= constant | expression | comparison
-```
+  ```enbf
+    variable-declaration::= variable-name assignment-operator variable-body
+    variable-name::= identifier
+    assignment-operator::= "="
+    variable-body::= constant | expression | comparison
+  ```
