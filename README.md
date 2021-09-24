@@ -22,4 +22,5 @@
       $name = "Naman"
       $name = 30.52
       $boolValue = 1
+      $number3 = $name * ( $number1 + 30 )
   ```
