@@ -1,0 +1,19 @@
+# This is a program to find if a number is even or odd for as many numbers you want
+FN main
+{
+	IN "Type 'YES' to enter more numbers" $yes
+	# The condition -> [] ensures that the eqality check is not case sensitive
+	LOOP ( $yes [] "YES" )
+	{ 
+		IN "Enter a number" $num
+		IS ( $num % 2 <> 0 )
+		{
+			OUT $num "is Even"
+		}
+		NONE
+		{
+			OUT $num "is ODD"
+		}
+		IN "Type 'YES' to enter more numbers" $yes
+	}
+}

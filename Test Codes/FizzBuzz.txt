@@ -1,0 +1,44 @@
+# This is a fizzbuzz program
+
+FN Condition $n
+{
+	IS ( $n % 3 <> 0 .. $n % 5 <> 0 )
+	{
+		OUT "FizzBuzz"
+	}
+	NONE
+	{
+		IS ( $n % 3 <> 0 )
+		{
+			OUT "Fizz"
+		}
+		NONE
+		{
+			IS ( $n % 5 <> 0 )
+			{
+				OUT "Buzz"
+			}
+			NONE
+			{
+				OUT $n
+			}
+		}
+	}
+}
+
+FN FizzBuzz $n
+{
+	# This frunction is just for the loop
+	$i = 1
+	LOOP ( $i <= $n )
+	{
+		CALL Condition $i
+		$i = $i + 1
+	}
+}
+
+FN main
+{
+	IN "Enter the maximum number:" $a
+	CALL FizzBuzz $a
+}
