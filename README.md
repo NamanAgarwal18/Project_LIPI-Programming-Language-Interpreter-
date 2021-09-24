@@ -11,10 +11,10 @@
 * There are no boolean values in Lipi, so ```True``` and ```False``` are represented as ```1``` and ```0``` respectively.
   #### Grammer
   ```enbf
-    variable-declaration::= variable-name assignment-operator variable-body
-    variable-name::= identifier
-    assignment-operator::= "="
-    variable-body::= constant | expression | comparison
+    variable-declaration  ::=  variable-name  assignment-operator  variable-body
+    variable-name  ::=  identifier
+    assignment-operator  ::=  "="
+    variable-body  ::=  constant  |  expression  |  comparison
   ```
   #### Wrong Declaration
   ```java
