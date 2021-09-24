@@ -10,25 +10,30 @@
 * A variable can hold a ```int```, ```double``` or a ```string```.
 * There are no boolean values in Lipi, so ```True``` and ```False``` are represented as ```1``` and ```0``` respectively.
 
-  ```java
-  # Wrong Declaration
-      int $number1 = 20
-      number2 = 20
-      $name = Naman
-      $boolValue = True
-      $number3 = $name*($number1+30)
-  ```
-  ```java
-  # Right Declaration
-      $number2 = 20
-      $name = "Naman"
-      $name = 30.52
-      $boolValue = 1
-      $number3 = $name * ( $number1 + 30 )
-  ```
   ```enbf
     variable-declaration::= variable-name assignment-operator variable-body
     variable-name::= identifier
     assignment-operator::= "="
     variable-body::= constant | expression | comparison
   ```
+ 
+  ```java
+  # Wrong Declaration
+  
+      int $number1 = 20
+      number2 = 20
+      $name = Naman
+      $boolValue = True
+      $number3 = $name*($number1+30)
+  ```
+  
+  ```java
+  # Right Declaration
+  
+      $number2 = 20
+      $name = "Naman"
+      $name = 30.52
+      $boolValue = 1
+      $number3 = $name * ( $number1 + 30 )
+  ```
+  
