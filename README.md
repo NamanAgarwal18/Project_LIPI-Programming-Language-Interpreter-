@@ -9,9 +9,9 @@
 * All variables start with a ```$``` symbol. 
 * A variable can hold a ```int```, ```double``` or a ```string```.
 * There are no boolean values in Lipi, so ```True``` and ```False``` are represented as ```1``` and ```0``` respectively.
-  ```
+  ```java
   # Wrong Declaration
-    ~~ int $number1 = 20 ~~
+    int $number1 = 20
     number2 = 20
     $name = Naman
     $boolValue = True
