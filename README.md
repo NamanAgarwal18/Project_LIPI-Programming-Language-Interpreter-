@@ -386,10 +386,11 @@
 ## Examples of code written in Lipi
   
 ### Even-Odd
+<details><summary><b> Click Here To See </b></summary>
+  
 This is a program to find if a number is even or odd for as many numbers you want. The program will let you enter the numbers one after another till you type 'yes'. This is a good introductory program to understand the basics of **variable declaration**, **input**, **output**, **conditions** and **loops** in Lipi.
   
  #### Code:
-  <details><h4><summary> Click Here To See The Code</summary></h4>
     
   ```python
       # This is a program to find if a number is even or odd for as many numbers you want
