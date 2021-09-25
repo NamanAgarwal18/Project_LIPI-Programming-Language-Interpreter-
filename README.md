@@ -383,7 +383,7 @@
   
 </details>
 
-## Examples of code written in Lipi
+## Examples of Code Written in Lipi
   
 <details><summary><b> Click Here To See all the <i><ins>Sample Lipi Codes</ins></i></b></summary> 
   
