@@ -48,10 +48,29 @@ In Lipi the words need to carefully spaced out.
 * `//` -> for floor division (returns integer)
 * `%`  -> for modulus 
 * `**` -> for raise to the power
+  ```python
+      $a = 20 + 30
+      # $a = 50
+      
+      $b = 20 - 30
+      # $a = -10
+      
+      $c = $a * $b
+      # $c = -500
+  ```
+
+
+## Operators Available on `string` values
+* `+`  -> for concatenating strings
+* `*`  -> for concatenating same string multiple times
+
 * `>`  -> to check greater than (returns 1 for True and 0 for False)
 * `<`  -> to check less than (returns 1 for True and 0 for False)
-* `>=`  -> to check greater than equal to (returns 1 for True and 0 for False)
-* `<=`  -> to check less than equal to (returns 1 for True and 0 for False)
-* `<>`  -> to check equal to (returns 1 for True and 0 for False)
-* `><`  -> to check not equal to (returns 1 for True and 0 for False)
-* 
+* `>=` -> to check greater than equal to (returns 1 for True and 0 for False)
+* `<=` -> to check less than equal to (returns 1 for True and 0 for False)
+* `<>` -> to check equal to (returns 1 for True and 0 for False)
+* `><` -> to check not equal to (returns 1 for True and 0 for False)
+* `[]` -> to check if absolute values are equal (returns 1 for True and 0 for False)
+* `[]` -> to check if absolute values are not equal (returns 1 for True and 0 for False)
+* `..` -> the logical AND
+* `++` -> the logical OR
