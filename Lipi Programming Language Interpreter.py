@@ -616,14 +616,20 @@ def processIf(words,obj,code):
             #print("Lines -> ",lineNo," ",code[lineNo],end-1," ",code[end-1])
             startExecution(mainStart = lineNo, mainEnd=end-1, code=code, obj=obj)
             #print("coming out ", code[lineNo])
+            
             lineNo = lineNo+1
             line = code[lineNo]
+           
             if line == "NONE":
                 #print("in -> ",line)
                 if (lineNo+1) in startParenthesis.keys():
                     lineNo = startParenthesis[lineNo+1]
                     lineNo = lineNo-1
-                    #print("393",lineNo,code[lineNo])            
+                    #print("393",lineNo,code[lineNo])      
+            else:
+                lineNo = lineNo -1
+                #print(lineNo,code[lineNo])
+                
         else:
             raise Exception("Error at " + str(lineNo) + " -> Not Indexed Correctly")
     else:
@@ -638,6 +644,9 @@ def processIf(words,obj,code):
                 end = startParenthesis.get(lineNo)
                 #print(end-1, " end = ", code[end-1])
                 startExecution(mainStart = lineNo, mainEnd = end -1, code = code, obj=obj)
+            else:
+                #print(lineNo)
+                lineNo = lineNo - 1
                 
         else:
             raise Exception("Error at " + str(lineNo) + " -> Not Indexed Correctly")
@@ -912,8 +921,10 @@ def startExecution(mainStart,mainEnd,code,obj):
             if(line[0] == "E" and line[1]=="X" and line[2]=="I" and line[3]=="T"):
                 #print("EXIT")
                 return False
-            
+        #print(lineNo,line)
         lineNo+=1
+        
+            
         line = code[lineNo]
         while len(line)==0:
             lineNo+=1
@@ -1009,6 +1020,8 @@ def main():
 
 # It starts the whole process and makes sure that if an exception 
 # is thrown then it catches it and desplays it properly.
+#main()
+
 try:
     main()
     inp = input()
