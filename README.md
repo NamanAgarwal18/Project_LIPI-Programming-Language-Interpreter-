@@ -102,3 +102,34 @@ In Lipi the words need to carefully spaced out.
 * `[]` -> to check if absolute values are not equal 
 * `..` -> the logical AND
 * `++` -> the logical OR
+
+  ```python
+      $a = "naman"
+      $b = "agarwal"
+      $c = 20
+      $d = 35
+      
+      $e = $a > $b
+      # $e = 1 ("naman" comes after "agarwal" alphabetically)
+      
+      $f  = $c >= $d
+      # $f = 0 (35 > 20)
+      
+      $g = $c >< 21
+      # $g = 1 (20 != 21)
+      
+      $h = $d <> -35
+      # $h = 0 (35 != -35)
+      
+      $i = $a <> "naman"
+      # $i = 1 ("naman" == "naman")
+      
+      $j = $b <> "Agarwal"
+      # $j = 0 ("agarwal" != "Agarwal")
+      
+      $k = $d [] -35
+      # $k = 1 ( abs(35) == abs(-35) )
+      
+      $l = $b [] "AgArwAl"
+      # $l = 1 ( [] checks equality case insensitivity ) 
+  ```
