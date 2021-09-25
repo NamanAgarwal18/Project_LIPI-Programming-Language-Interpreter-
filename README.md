@@ -57,6 +57,18 @@ In Lipi the words need to carefully spaced out.
       
       $c = $a * $b
       # $c = -500
+      
+      $d = 101 / $a
+      # $d = 2.02
+      
+      $e = 101 // $a
+      # $e = 2
+      
+      $f = 101 % $a
+      # $f = 1
+      
+      $g = 2 ** 3
+      # $g = 8
   ```
 
 
