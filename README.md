@@ -410,8 +410,8 @@ This is a program to find if a number is even or odd for as many numbers you wan
           }
       }
   ```
- #### Output: 
-  ![Even-Odd](https://user-images.githubusercontent.com/53811147/134787433-10fe881d-8218-4dd6-a9a0-7d651d35fda6.PNG)
+ #### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Even-Odd.txt) to see the code. 
+ #### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Even-Odd.PNG) to see the output.
 
  
 ## Instruction To Run The Code:
