@@ -43,12 +43,14 @@ In Lipi the words need to carefully spaced out.
     * The output statement can display multiple statements and variables at a time seperated by a space bar.
  #### Wrong Declaration
     ```python
+    
         IN Enter the $a variable $a
         
        
     ```
  #### Wrong Declaration
     ```python
+    
         IN "Enter the $a variable" $a
         IN "Enter the value of $a: " $a ", the value of $b:" $b "and the value of $c:" $c
     ```
