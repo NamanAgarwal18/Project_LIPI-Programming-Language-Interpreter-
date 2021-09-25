@@ -369,7 +369,7 @@
 </details>
 
 ## Keywords Available
-<details><summary><b> Click Here To See <i><ins>Keywords Available</ins></i></b></summary>  
+<details><summary><b><font color="blue"> Click Here To See <i><ins>Keywords Available</ins></i></font></b></summary>  
 
 * `IN` -> Keyword used to write an input variables from the users.
 * `OUT` -> Keyword usef to output data to the users.
