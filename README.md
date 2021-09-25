@@ -132,7 +132,7 @@ In Lipi the words need to carefully spaced out.
        }
   ```
   #### Correct Code
-  ```pythoon
+  ```python
       $i = 0
       LOOP ( $i > 30 )
       {
