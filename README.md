@@ -35,9 +35,50 @@ In Lipi the words need to carefully spaced out.
       $boolValue = 1
       $number3 = $name * ( $number1 + 30 )
   ```
- ### 2. Conditional Statements: 
+ ### 2. Input / Output Statements:
+ #### 1. Input - `IN`
+    * The input statement can take in multiple inputs at a time seperated by a space-bar.
+    * The input statement can also display a statement before inputting the data.
+ #### 2. Output - `OUT`
+    * The output statement can display multiple statements and variables at a time seperated by a space bar.
+ #### Wrong Declaration
+    ```java
+        IN Enter the $a variable $a
+        
+       
+    ```
+ #### Wrong Declaration
+    ```java
+        IN "Enter the $a variable" $a
+        IN "Enter the value of $a: " $a ", the value of $b:" $b "and the value of $c:" $c
+    ```
+ 
+ ### 3. Conditional Statements: 
  * The conditional statement uses keyword `IS`
- * 
+ * The `IS` statement block has an option to be followed by `NONE` statement block acting as an `else` statement. 
+ * `IS` statement expects a 0 or 1 input in the form of a condition within the brackets. 
+  #### Wrong Declaration
+  ```java
+      $a = 20
+      $b = 30
+      
+      IS ( $a > $b )
+      {
+        
+      }
+      NONE IS ( $a <> $b )
+      {
+      
+      }
+      NONE 
+      {
+      
+      }
+  ```
+  #### Right Declaration
+  ```java
+  
+  ```
 
 
 ## Operators Available on `int` and `double` values
