@@ -20,7 +20,7 @@ In Lipi the words need to carefully spaced out.
     variable-body  ::=  constant  |  expression  |  comparison
   ```
   #### Wrong Declaration
-  ```java
+  ```python
       int $number1 = 20
       number2 = 20
       $name = Naman
@@ -28,7 +28,7 @@ In Lipi the words need to carefully spaced out.
       $number3 = $name*($number1+30)
   ```
   #### Right Declaration
-  ```java
+  ```python
       $number2 = 20
       $name = "Naman"
       $name = 30.52
@@ -42,13 +42,13 @@ In Lipi the words need to carefully spaced out.
  #### 2. Output - `OUT`
     * The output statement can display multiple statements and variables at a time seperated by a space bar.
  #### Wrong Declaration
-    ```java
+    ```python
         IN Enter the $a variable $a
         
        
     ```
  #### Wrong Declaration
-    ```java
+    ```python
         IN "Enter the $a variable" $a
         IN "Enter the value of $a: " $a ", the value of $b:" $b "and the value of $c:" $c
     ```
@@ -58,7 +58,7 @@ In Lipi the words need to carefully spaced out.
  * The `IS` statement block has an option to be followed by `NONE` statement block acting as an `else` statement. 
  * `IS` statement expects a 0 or 1 input in the form of a condition within the brackets. 
   #### Wrong Declaration
-  ```java
+  ```python
       $a = 20
       $b = 30
       
@@ -76,7 +76,7 @@ In Lipi the words need to carefully spaced out.
       }
   ```
   #### Right Declaration
-  ```java
+  ```python
   
   ```
 
