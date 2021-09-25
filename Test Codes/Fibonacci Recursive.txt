@@ -1,0 +1,24 @@
+# This is a fibonacci program via recursive approach
+FN fib $n
+{
+	RET ( $n < 2 ) $n
+	$a = $n - 1
+	$b = $n - 2
+	CALL fib $a -> $a
+	CALL fib $b -> $b
+	$a = $b + $a
+	RET $a
+}
+
+FN main
+{
+	IN "Enter the index" $a
+	$i = 1
+	OUT "The Fibonacci series is:"
+	LOOP ( $i <= $a )
+	{
+		CALL fib $i -> $b
+		OUT $i "->" $b
+		$i = $i + 1
+	}
+}
