@@ -42,13 +42,13 @@ In Lipi the words need to carefully spaced out.
      * The input statement can also display a statement before inputting the data.
    #### 2. Output - `OUT`
      * The output statement can display multiple statements and variables at a time seperated by a space bar.
-   #### Wrong Declaration
+   #### Incorrect Code
    ```python
        IN Enter the $a variable $a
 
        OUT The value of $a is: $a
    ```
-   #### Right Declaration
+   #### Correct Code
    ```python
        IN "Enter the $a variable" $a
        IN "Enter the value of $a: " $a ", the value of $b:" $b "and the value of $c:" $c
@@ -56,12 +56,11 @@ In Lipi the words need to carefully spaced out.
        OUT "The value of $a is:" $a
        OUT "The value of $a is:" $a ", $b is:" $b "and $c is" $c
    ```
-
 ### 3. Conditional Statements: 
 * The conditional statement uses keyword `IS`
 * The `IS` statement block has an option to be followed by `NONE` statement block acting as an `else` statement. 
 * `IS` statement expects a 0 or 1 input in the form of a condition within the brackets. 
-  #### Wrong Declaration
+  #### Incorrect Code
   ```python
       $a = 20
       $b = 30
@@ -82,7 +81,7 @@ In Lipi the words need to carefully spaced out.
           OUT "True"
       }
   ```
-  #### Right Declaration
+  #### Correct Code
   ```python
       $a = 20
       $b = 30
@@ -108,7 +107,63 @@ In Lipi the words need to carefully spaced out.
           OUT "True"
       }
   ```
-
+### 4. Loop Statements: 
+* The loop stattement uses the keyword `LOOP`
+* The Loop in Lipi is like `while` loop in other programming language.
+* You can use an `EXIT` statement to break out of the loop if a certain condition is fulfilled.
+* You can easily create nested loops to do your work.
+  #### Incorrect Code
+  ```python
+      LOOP ( $i > 30 )
+      {
+          OUT "In Loop"
+      }
+      
+      $i = 0
+      $j = 2
+      LOOP ( $i < 30 )
+      {
+          $j = $j * $j
+          $i = $i + 1
+          IS ( $j > 200 )
+          {
+              EXIT
+          }
+       }
+  ```
+  #### Correct Code
+  ```pythoon
+      $i = 0
+      LOOP ( $i > 30 )
+      {
+          OUT "In Loop"
+          $i = $i + 1
+      }
+      
+      $i = 0
+      $j = 2
+      LOOP ( $i < 30 )
+      {
+          $j = $j * $j
+          $i = $i + 1
+          EXIT ( $j > 200 )
+      }
+      
+      $d = 0
+      $f = 0
+      LOOP ( $d < 3 )
+      {
+          $e = 0
+          LOOP ( $e < 3 )
+          {
+              $e = $e + 1
+              $f = $f + 1
+              EXIT ( $f > 5 )
+          }
+          $d = $d + 1
+      }
+      OUT "Exitted $d:" $d "and $e:" $e "and $f:" $f 
+  ```
 
 ## Operators Available on `int` and `double` values
 * `+`  -> for addition
