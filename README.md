@@ -36,7 +36,7 @@ In Lipi the words need to carefully spaced out.
       $number3 = $name * ( $number1 + 30 )
   ```
  ### 2. Input / Output Statements:
- 
+ * We use `IN` keyword to input data and `OUT` keyword to display the data.
    #### 1. Input - `IN`
      * The input statement can take in multiple inputs at a time seperated by a space-bar.
      * The input statement can also display a statement before inputting the data.
