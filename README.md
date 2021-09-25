@@ -49,13 +49,13 @@ In Lipi the words need to carefully spaced out.
        OUT The value of $a is: $a
    ```
    #### Right Declaration
-  ```python
-      IN "Enter the $a variable" $a
-      IN "Enter the value of $a: " $a ", the value of $b:" $b "and the value of $c:" $c
+   ```python
+       IN "Enter the $a variable" $a
+       IN "Enter the value of $a: " $a ", the value of $b:" $b "and the value of $c:" $c
 
-      OUT "The value of $a is:" $a
-      OUT "The value of $a is:" $a ", $b is:" $b "and $c is" $c
-  ```
+       OUT "The value of $a is:" $a
+       OUT "The value of $a is:" $a ", $b is:" $b "and $c is" $c
+   ```
 
  ### 3. Conditional Statements: 
  * The conditional statement uses keyword `IS`
