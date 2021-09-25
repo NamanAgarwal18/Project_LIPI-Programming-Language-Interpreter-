@@ -388,6 +388,7 @@
 ### Even-Odd
 This is a program to find if a number is even or odd for as many numbers you want. The program will let you enter the numbers one after another till you type 'yes'. This is a good introductory program to understand the basics of **variable declaration**, **input**, **output**, **conditions** and **loops** in Lipi.
   
+ #### Code:
   ```python
       # This is a program to find if a number is even or odd for as many numbers you want
       FN main
@@ -409,7 +410,10 @@ This is a program to find if a number is even or odd for as many numbers you wan
           }
       }
   ```
-  
+ #### Output: 
+  ![Even-Odd](https://user-images.githubusercontent.com/53811147/134787433-10fe881d-8218-4dd6-a9a0-7d651d35fda6.PNG)
+
+ 
 ## Instruction To Run The Code:
 * Download the [Lipi Programming Language Interpreter.py](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Lipi%20Programming%20Language%20Interpreter.py) file and save it in a folder.
 * Create a **Lipi Program** in a textfile and save it in the same folder with **.txt** extention.
