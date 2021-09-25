@@ -471,6 +471,149 @@ This is the popular FizzBuzz program coded in Lipi. This program will let you ty
    
    </details>
     
+### Printing Pattern:
+Printing various patters using stars or numbers in the form of triangles or rectangles is a good way too test **nested loop** logic building. Here i have implemented a code that will input a single digit even number and then print a complex pattern using nested loops.
+
+
+   <details><summary><b> Click Here To See The Code</b></summary>
+     
+    ```python
+        
+        # For an input of '6'
+        # The output would be - 
+        #
+        #  6 5 4 3 2 1 2 3 4 5 6  
+        #  5 4 3 2 1   1 2 3 4 5  
+        #  4 3 2 1       1 2 3 4  
+        #  3 2 1           1 2 3  
+        #  2 1               1 2  
+        #  1                   1  
+        #  2 1               1 2  
+        #  3 2 1           1 2 3  
+        #  4 3 2 1       1 2 3 4  
+        #  5 4 3 2 1   1 2 3 4 5  
+        #  6 5 4 3 2 1 2 3 4 5 6 
+
+        FN upperPattern $n
+        {
+            $i = $n
+            # Loop for the Number of rows -> n rows
+            LOOP ( $i > 0 )
+            {
+                $text = " "
+                $j = $i
+                $k = 0
+
+                # Loop for the first left-top square
+                LOOP ( $k < $n )
+                {
+                    IS ( $j < 1 )
+                    {
+                        $text = $text + " "
+                    }
+                    NONE
+                    {
+                        $text = $text + $j
+                    }
+                    # To give an extra space
+                    $text = $text + " "
+                    $j = $j - 1
+                    $k = $k + 1 
+                }
+
+                $k = $n - $i - 1
+                LOOP ( $k > 0 )
+                {
+                    $text = $text + " "
+                    $text = $text + " "
+                    $k = $k - 1
+                }
+
+                $k = 1
+                LOOP ( $k <= $i )
+                {
+                    IS ( ( $i >< $n ) ++ ( $k >< 1 ) )
+                    {
+                        $text = $text + $k
+                        $text = $text + " "
+                    }
+                    $k = $k + 1
+                }
+                $i = $i - 1
+                OUT $text
+              }
+          }
+
+          FN lowerPattern $n
+          {
+              $i = 2
+              # Loop for the Number of rows -> n-1 rows
+              LOOP ( $i <= $n )
+              {
+                  $text = " "
+                  $j = $i
+                  $k = 0
+                  LOOP ( $k < $n )
+                  {
+                      IS ( $j > 0 )
+                      {
+                          $text = $text + $j
+                      }
+                      NONE
+                      {
+                          $text = $text + " "
+                      }
+                      $j = $j - 1
+                      $k = $k + 1
+                      $text = $text + " "
+                  }
+                  $k = $n - $i - 1
+                  LOOP ( $k > 0 )
+                  {
+                      $text = $text + " "
+                      $text = $text + " "
+                      $k = $k - 1
+                  }
+                  $k = 1
+                  LOOP ( $k <= $i )
+                  {
+                      IS ( ( $i >< $n ) ++ ( $k >< 1 ) )
+                      {
+                          $text = $text + $k
+                          $text = $text + " "
+                      }
+                      $k = $k + 1
+                  }
+                  $i = $i + 1
+                  OUT $text
+            }
+        }
+
+        FN pattern $n
+        {
+            # To Print the upper half of the pattern
+            CALL upperPattern $n
+
+            # To Print the lower half of the pattern
+            CALL lowerPattern $n
+        }
+
+        FN main
+        {
+            $n = 1
+            LOOP ( $n % 2 >< 0 ++ $n > 9 )
+            {
+                IN "Enter an Even Single Digit Number:" $n
+            }
+            CALL pattern $n
+        }
+    ```
+   
+#### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Pattern.txt) to see the code. 
+#### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Pattern.PNG) to see the output.
+   </details>
+     
+     
 ## Instruction To Run The Code:
 * Download the [Lipi Programming Language Interpreter.py](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Lipi%20Programming%20Language%20Interpreter.py) file and save it in a folder.
 * Create a **Lipi Program** in a textfile and save it in the same folder with **.txt** extention.
