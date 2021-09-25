@@ -9,18 +9,12 @@
 * A variable is only available from inside the function it is created.
 
 ## Language Grammar
+<details><summary>Click Here To See Language Grammar</summary>
 ### 1. Variable Declaration:
 * There is no need to specify the data type.
 * All variables start with a `$` symbol. 
 * A variable can hold a ```int```, ```double``` or a ```string```.
 * There are no boolean values in Lipi, so ```True``` and ```False``` are represented as ```1``` and ```0``` respectively.
-  #### Grammer:
-  ```enbf
-    variable-declaration  ::=  variable-name  assignment-operator  variable-body
-    variable-name  ::=  identifier
-    assignment-operator  ::=  "="
-    variable-body  ::=  constant  |  expression  |  comparison
-  ```
   #### Wrong Declaration:
   ```python
       int $number1 = 20
@@ -261,7 +255,8 @@
           CALL isEven $a -> $c
           OUT $c
       ```
-
+</details>
+  
 ## Operators Available on `int` and `double` values
 * `+`  -> for addition
 * `-`  -> for substraction
