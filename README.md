@@ -259,6 +259,8 @@
 </details>
   
 ## Operators Available on `int` and `double` values
+<details><summary><b> Click Here To See <i><ins>Operators Available</ins></i></b></summary>  
+  
 * `+`  -> for addition
 * `-`  -> for substraction
 * `*`  -> for multiplication
@@ -289,7 +291,9 @@
       $g = 2 ** 3
       # $g = 8
   ```
-
+  
+</details>
+  
 ## Operators Available on `string` values
 * `+`  -> for concatenating strings
 * `*`  -> for concatenating same string multiple times
