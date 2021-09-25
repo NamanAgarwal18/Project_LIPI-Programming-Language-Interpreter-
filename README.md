@@ -35,29 +35,29 @@ In Lipi the words need to carefully spaced out.
       $boolValue = 1
       $number3 = $name * ( $number1 + 30 )
   ```
- ### 2. Input / Output Statements:
- * We use `IN` keyword to input data and `OUT` keyword to display the data.
-   #### 1. Input - `IN`
-     * The input statement can take in multiple inputs at a time seperated by a space-bar.
-     * The input statement can also display a statement before inputting the data.
-   #### 2. Output - `OUT`
-     * The output statement can display multiple statements and variables at a time seperated by a space bar.
-   #### Wrong Declaration
-   ```python
-       IN Enter the $a variable $a
+### 2. Input / Output Statements:
+* We use `IN` keyword to input data and `OUT` keyword to display the data.
+ #### 1. Input - `IN`
+   * The input statement can take in multiple inputs at a time seperated by a space-bar.
+   * The input statement can also display a statement before inputting the data.
+ #### 2. Output - `OUT`
+   * The output statement can display multiple statements and variables at a time seperated by a space bar.
+ #### Wrong Declaration
+ ```python
+     IN Enter the $a variable $a
 
-       OUT The value of $a is: $a
-   ```
-   #### Right Declaration
-   ```python
-       IN "Enter the $a variable" $a
-       IN "Enter the value of $a: " $a ", the value of $b:" $b "and the value of $c:" $c
+     OUT The value of $a is: $a
+ ```
+ #### Right Declaration
+ ```python
+     IN "Enter the $a variable" $a
+     IN "Enter the value of $a: " $a ", the value of $b:" $b "and the value of $c:" $c
 
-       OUT "The value of $a is:" $a
-       OUT "The value of $a is:" $a ", $b is:" $b "and $c is" $c
-   ```
+     OUT "The value of $a is:" $a
+     OUT "The value of $a is:" $a ", $b is:" $b "and $c is" $c
+ ```
 
- ### 3. Conditional Statements: 
+### 3. Conditional Statements: 
  * The conditional statement uses keyword `IS`
  * The `IS` statement block has an option to be followed by `NONE` statement block acting as an `else` statement. 
  * `IS` statement expects a 0 or 1 input in the form of a condition within the brackets. 
