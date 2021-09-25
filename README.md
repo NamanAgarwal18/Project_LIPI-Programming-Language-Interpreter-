@@ -385,7 +385,7 @@
 
 ## Examples of code written in Lipi
   
-### Even-Odd  
+### Even-Odd:
 This is a program to find if a number is even or odd for as many numbers you want. The program will let you enter the numbers one after another till you type 'yes'. This is a good introductory program to understand the basics of **variable declaration**, **input**, **output**, **conditions** and **loops** in Lipi.
   
   <details><summary><b> Click Here To See The Code</b></summary>
@@ -416,7 +416,61 @@ This is a program to find if a number is even or odd for as many numbers you wan
     
   </details>
 
- 
+### FizzBuzz:
+This is the popular FizzBuzz program coded in Lipi. This program will let you type in the maximum limit and then it will print accordingly. This is a good program to show a little complex **conditional statements**. Apart from intensive use of conditional statements I have also created multiple **fucntions** to implement this program.
+    
+   <details><summary><b> Click Here To See The Code</b></summary>
+   
+   ```python
+        # This is a fizzbuzz program
+        FN Condition $n
+        {
+            IS ( $n % 3 <> 0 .. $n % 5 <> 0 )
+            {
+                OUT "FizzBuzz"
+            }
+            NONE
+            {
+                IS ( $n % 3 <> 0 )
+                {
+                    OUT "Fizz"
+                }
+                NONE
+                {
+                    IS ( $n % 5 <> 0 )
+                    {
+                        OUT "Buzz"
+                    }
+                    NONE
+                    {
+                        OUT $n
+                    }
+                }
+            }
+        }
+
+        FN FizzBuzz $n
+        {
+            # This frunction is just for the loop
+            $i = 1
+            LOOP ( $i <= $n )
+            {
+                CALL Condition $i
+                $i = $i + 1
+            }
+        }
+
+        FN main
+        {
+            IN "Enter the maximum number:" $a
+            CALL FizzBuzz $a
+        }
+   ```
+   #### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/FizzBuzz.txt) to see the code. 
+   #### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/FizzBuzz.PNG) to see the output.
+   
+   </details>
+    
 ## Instruction To Run The Code:
 * Download the [Lipi Programming Language Interpreter.py](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Lipi%20Programming%20Language%20Interpreter.py) file and save it in a folder.
 * Create a **Lipi Program** in a textfile and save it in the same folder with **.txt** extention.
