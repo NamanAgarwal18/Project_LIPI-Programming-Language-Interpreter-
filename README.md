@@ -367,3 +367,18 @@
       # $n = 1 (Even though the second condition is wrong but '0 or 1' = 1)
   ```
 </details>
+
+## Keywords Available
+<details><summary><b> Click Here To See <i><ins>Keywords Available</ins></i></b></summary>  
+
+* `IN` -> Keyword used to write an input variables from the users.
+* 'OUT` -> Keyword usef to output data to the users.
+* `IS` -> Keyword used to write a conditional block.
+* `NONE` -> Keyword used in conjuction with an `IS` statement to specify what to do if the condition fails.
+* `LOOP` -> Keyword used to start a loop.
+* `EXIT` -> Keyword used to break out of a loop.
+* `FN` -> Keyword used to declare and define a fucntion.
+* `RET` -> Keyword used to return a value from the function.
+* `CALL` -> Keyword used to call a function.
+  
+</details>
