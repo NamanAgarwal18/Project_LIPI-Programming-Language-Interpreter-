@@ -1,10 +1,10 @@
 # Lipi Programming Language
 
 ## Description
-**Lipi** is a small programming language created by Naman Agarwal. It supports various fundamental programming concepts such as variable-declaration, function calling, conditional statements, loops, proper order of operations, and recursion. Along with the language there is a **Python** based interpreter to run the code written in Lipi. 
- The execution of a program in Lipi starts with the main function which does not return anything. 
- Lipi does not use semi-colons to terminate statements, instead it relies on the fact that each new line is the start of a new statement and end of the previous. 
- In Lipi the words need to carefully spaced out.
+**Lipi** is a small programming language created by Naman Agarwal. It supports various fundamental programming concepts such as variable-declaration, function calling, conditional statements, loops, proper order of operations, and recursion. Along with the language there is a **Python** based interpreter to run the code written in Lipi. <br>
+The execution of a program in Lipi starts with the main function which does not return anything. <br>
+Lipi does not use semi-colons to terminate statements, instead it relies on the fact that each new line is the start of a new statement and end of the previous. <br>
+In Lipi the words need to carefully spaced out. 
 
 ## Language Grammar
 ### 1. Variable Declaration:
