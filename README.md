@@ -67,16 +67,19 @@ In Lipi the words need to carefully spaced out.
       $b = 30
       
       IS ( $a > $b )
+          OUT $a "greater that" $b
+      NONE IS ($a<>$b)
       {
-        OUT $a "greater that" $b
-      }
-      NONE IS ( $a <> $b )
-      {
-        OUT $a "equal to" $b
+          OUT $a "equal to" $b
       }
       NONE 
       {
-        OUT $a "less than" $b
+          OUT $a "less than" $b
+      }
+      
+      IS ( ( $a < 30 + 20 ) ++ ( 20 < $b .. $b < 50 ) )
+      {
+          OUT "True"
       }
   ```
   #### Right Declaration
@@ -86,20 +89,24 @@ In Lipi the words need to carefully spaced out.
       
       IS ( $a > $b )
       {
-        OUT $a "greater that" $b
+          OUT $a "greater that" $b
       }
       NONE 
       {
-        IS ( $a <> $b )
-        {
-          OUT $a "equal to" $b
-        }
-        NONE 
-        {
-          OUT $a "less than" $b
-        }
+          IS ( $a <> $b )
+          {
+            OUT $a "equal to" $b
+          }
+          NONE 
+          {
+            OUT $a "less than" $b
+          }
       }
       
+      IS ( ( $a < ( 30 + 20 ) ) ++ ( 20 < $b < 50 ) )
+      {
+          OUT "True"
+      }
   ```
 
 
