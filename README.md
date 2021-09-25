@@ -10,6 +10,7 @@
 
 ## Language Grammar
 <details><summary>Click Here To See Language Grammar</summary>
+  
 ### 1. Variable Declaration:
 * There is no need to specify the data type.
 * All variables start with a `$` symbol. 
