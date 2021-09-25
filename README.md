@@ -369,7 +369,7 @@
 </details>
 
 ## Keywords Available
-<details><summary><b><font color="blue"> Click Here To See <i><ins>Keywords Available</ins></i></font></b></summary>  
+<details><summary><b> Click Here To See <i><ins>Keywords Available</ins></i></b></summary>  
 
 * `IN` -> Keyword used to write an input variables from the users.
 * `OUT` -> Keyword usef to output data to the users.
@@ -382,3 +382,8 @@
 * `CALL` -> Keyword used to call a function.
   
 </details>
+  
+## Instruction To Run Code:
+* Download the [Lipi Programming Language Interpreter.py](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Lipi%20Programming%20Language%20Interpreter.py) file and save it in a folder.
+* Create a **Lipi Program** in a textfile and save it in the same folder with **.txt** extention.
+* Run the **"Lipi Programming Language Interpreter.py"** file and input the name of **Lipi Program** file **.txt** extention and hhit enter.
