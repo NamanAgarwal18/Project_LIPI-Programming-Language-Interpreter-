@@ -132,4 +132,10 @@ In Lipi the words need to carefully spaced out.
       
       $l = $b [] "AgArwAl"
       # $l = 1 ( [] checks equality case insensitivity ) 
+      
+      $m = ( $a [] "Naman" ) .. ( $c > $d )
+      # $m = 0 (As the second condition is wrong and '0 and 1' = 0)
+      
+      $n = ( $a [] "Naman" ) ++ ( $c > $d )
+      # $n = 1 (Even though the second condition is wrong but '0 or 1' = 1)
   ```
