@@ -37,24 +37,22 @@ In Lipi the words need to carefully spaced out.
   ```
  ### 2. Input / Output Statements:
  #### 1. Input - `IN`
-    * The input statement can take in multiple inputs at a time seperated by a space-bar.
-    * The input statement can also display a statement before inputting the data.
+   * The input statement can take in multiple inputs at a time seperated by a space-bar.
+   * The input statement can also display a statement before inputting the data.
  #### 2. Output - `OUT`
-    * The output statement can display multiple statements and variables at a time seperated by a space bar.
+   * The output statement can display multiple statements and variables at a time seperated by a space bar.
  #### Wrong Declaration
-    ```
-    
-        IN Enter the $a variable $a
-        
-       
-    ```
+   ```python
+       IN Enter the $a variable $a
+
+   ```
  #### Wrong Declaration
-    ```
-    
-        IN "Enter the $a variable" $a
-        IN "Enter the value of $a: " $a ", the value of $b:" $b "and the value of $c:" $c
-    ```
- 
+  ```
+
+      IN "Enter the $a variable" $a
+      IN "Enter the value of $a: " $a ", the value of $b:" $b "and the value of $c:" $c
+  ```
+
  ### 3. Conditional Statements: 
  * The conditional statement uses keyword `IS`
  * The `IS` statement block has an option to be followed by `NONE` statement block acting as an `else` statement. 
