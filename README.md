@@ -612,7 +612,42 @@ Printing various patters using stars or numbers in the form of triangles or rect
 #### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Pattern.txt) to see the code. 
 #### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Pattern.PNG) to see the output.
    </details>
+  
+### Fibonacci Recursive:
+Writing the fibonacci series till a given index is a very popular basic coding program. Eventhough the recursive way of writing a fibonacci program creates a slow program overall as it needs to calculate same thing over and over again, it still is a good way too practice the concept of basic recursion and check a language's capabilities of handling multiple recursive calls.
+ 
+   <details><summary><b> Click Here To See The Code</b></summary>
      
+   ```python
+        # This is a fibonacci program via recursive approach
+        FN fib $n
+        {
+            RET ( $n < 2 ) $n
+            $a = $n - 1
+            $b = $n - 2
+            CALL fib $a -> $a
+            CALL fib $b -> $b
+            $a = $b + $a
+            RET $a
+        }
+
+        FN main
+        {
+            IN "Enter the index" $a
+            $i = 1
+            OUT "The Fibonacci series is:"
+            LOOP ( $i <= $a )
+            {
+                CALL fib $i -> $b
+                OUT $i "->" $b
+                $i = $i + 1
+            }
+        }
+   ```
+#### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Fibonacci%20Recursive.txt) to see the code. 
+#### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Fibonacci%20Recursive.PNG) to see the output.
+     
+   </details>
      
 ## Instruction To Run The Code:
 * Download the [Lipi Programming Language Interpreter.py](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Lipi%20Programming%20Language%20Interpreter.py) file and save it in a folder.
