@@ -48,6 +48,7 @@ In Lipi the words need to carefully spaced out.
 * `//` -> for floor division (returns integer)
 * `%`  -> for modulus 
 * `**` -> for raise to the power
+
   ```python
       $a = 20 + 30
       # $a = 50
@@ -71,18 +72,33 @@ In Lipi the words need to carefully spaced out.
       # $g = 8
   ```
 
-
 ## Operators Available on `string` values
 * `+`  -> for concatenating strings
 * `*`  -> for concatenating same string multiple times
 
-* `>`  -> to check greater than (returns 1 for True and 0 for False)
-* `<`  -> to check less than (returns 1 for True and 0 for False)
-* `>=` -> to check greater than equal to (returns 1 for True and 0 for False)
-* `<=` -> to check less than equal to (returns 1 for True and 0 for False)
-* `<>` -> to check equal to (returns 1 for True and 0 for False)
-* `><` -> to check not equal to (returns 1 for True and 0 for False)
-* `[]` -> to check if absolute values are equal (returns 1 for True and 0 for False)
-* `[]` -> to check if absolute values are not equal (returns 1 for True and 0 for False)
+  ```python
+      $a = "naman"
+      $b = "agarwal"
+      
+      $c = $a + $b
+      # $c = "namanagarwal"
+      
+      $d = $a + 5
+      # $d = "naman5"
+      
+      $e = $a * 3
+      # $e = "namannamannaman" 
+  ```
+
+## Comparitors Available
+#### Comparitors returns 1 for True and 0 for False
+* `>`  -> to check greater than 
+* `<`  -> to check less than 
+* `>=` -> to check greater than equal to 
+* `<=` -> to check less than equal to 
+* `<>` -> to check equal to
+* `><` -> to check not equal to 
+* `[]` -> to check if absolute values are equal 
+* `[]` -> to check if absolute values are not equal 
 * `..` -> the logical AND
 * `++` -> the logical OR
