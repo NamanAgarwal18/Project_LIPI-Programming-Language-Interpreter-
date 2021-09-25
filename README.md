@@ -58,9 +58,9 @@ In Lipi the words need to carefully spaced out.
    ```
 
 ### 3. Conditional Statements: 
- * The conditional statement uses keyword `IS`
- * The `IS` statement block has an option to be followed by `NONE` statement block acting as an `else` statement. 
- * `IS` statement expects a 0 or 1 input in the form of a condition within the brackets. 
+* The conditional statement uses keyword `IS`
+* The `IS` statement block has an option to be followed by `NONE` statement block acting as an `else` statement. 
+* `IS` statement expects a 0 or 1 input in the form of a condition within the brackets. 
   #### Wrong Declaration
   ```python
       $a = 20
@@ -68,20 +68,38 @@ In Lipi the words need to carefully spaced out.
       
       IS ( $a > $b )
       {
-        
+        OUT $a "greater that" $b
       }
       NONE IS ( $a <> $b )
       {
-      
+        OUT $a "equal to" $b
       }
       NONE 
       {
-      
+        OUT $a "less than" $b
       }
   ```
   #### Right Declaration
   ```python
-  
+      $a = 20
+      $b = 30
+      
+      IS ( $a > $b )
+      {
+        OUT $a "greater that" $b
+      }
+      NONE 
+      {
+        IS ( $a <> $b )
+        {
+          OUT $a "equal to" $b
+        }
+        NONE 
+        {
+          OUT $a "less than" $b
+        }
+      }
+      
   ```
 
 
