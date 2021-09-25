@@ -388,7 +388,7 @@
 ### Even-Odd  
 This is a program to find if a number is even or odd for as many numbers you want. The program will let you enter the numbers one after another till you type 'yes'. This is a good introductory program to understand the basics of **variable declaration**, **input**, **output**, **conditions** and **loops** in Lipi.
   
-<details><summary><b> Click Here To See The Code</b></summary>
+  <details><summary><b> Click Here To See The Code</b></summary>
     
   ```python
       # This is a program to find if a number is even or odd for as many numbers you want
