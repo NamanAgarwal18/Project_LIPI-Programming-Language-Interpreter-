@@ -9,7 +9,7 @@
 * A variable is only available from inside the function it is created.
 
 ## Language Grammar
-<details><summary>Click Here To See Language Grammar</summary>
+<details><summary><b>Click Here To See <u>Language Grammar</u></b></summary>
   
 ### 1. Variable Declaration:
 * There is no need to specify the data type.
