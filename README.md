@@ -295,6 +295,8 @@
 </details>
   
 ## Operators Available on `string` values
+<details><summary><b> Click Here To See <i><ins>Operators Available</ins></i></b></summary>  
+  
 * `+`  -> for concatenating strings
 * `*`  -> for concatenating same string multiple times
 
@@ -311,8 +313,11 @@
       $e = $a * 3
       # $e = "namannamannaman" 
   ```
-
+  </details>
+  
 ## Comparitors Available
+<details><summary><b> Click Here To See <i><ins>Comparators Available</ins></i></b></summary>  
+  
 #### Comparitors returns 1 for True and 0 for False
 * `>`  -> to check greater than 
 * `<`  -> to check less than 
@@ -361,3 +366,4 @@
       $n = ( $a [] "Naman" ) ++ ( $c > $d )
       # $n = 1 (Even though the second condition is wrong but '0 or 1' = 1)
   ```
+</details>
