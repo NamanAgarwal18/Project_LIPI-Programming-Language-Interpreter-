@@ -372,7 +372,7 @@
 <details><summary><b> Click Here To See <i><ins>Keywords Available</ins></i></b></summary>  
 
 * `IN` -> Keyword used to write an input variables from the users.
-* 'OUT` -> Keyword usef to output data to the users.
+* `OUT` -> Keyword usef to output data to the users.
 * `IS` -> Keyword used to write a conditional block.
 * `NONE` -> Keyword used in conjuction with an `IS` statement to specify what to do if the condition fails.
 * `LOOP` -> Keyword used to start a loop.
