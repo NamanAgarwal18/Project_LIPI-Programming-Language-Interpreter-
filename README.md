@@ -35,4 +35,23 @@ In Lipi the words need to carefully spaced out.
       $boolValue = 1
       $number3 = $name * ( $number1 + 30 )
   ```
-  
+ ### 2. Conditional Statements: 
+ * The conditional statement uses keyword `IS`
+ * 
+
+
+## Operators Available on `int` and `double` values
+* `+`  -> for addition
+* `-`  -> for substraction
+* `*`  -> for multiplication
+* `/`  -> for normal division
+* `//` -> for floor division (returns integer)
+* `%`  -> for modulus 
+* `**` -> for raise to the power
+* `>`  -> to check greater than (returns 1 for True and 0 for False)
+* `<`  -> to check less than (returns 1 for True and 0 for False)
+* `>=`  -> to check greater than equal to (returns 1 for True and 0 for False)
+* `<=`  -> to check less than equal to (returns 1 for True and 0 for False)
+* `<>`  -> to check equal to (returns 1 for True and 0 for False)
+* `><`  -> to check not equal to (returns 1 for True and 0 for False)
+* 
