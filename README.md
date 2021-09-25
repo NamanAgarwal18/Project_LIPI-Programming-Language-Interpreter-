@@ -228,39 +228,39 @@
     * If the fucntion returns something then it is mandatory to give a variable to store the returned value.
     * You can still give a returning variable even if the fucntion doesn't return anything. In this case the returning variable would store 1 if the fucntion was run successfully.
     ##### Incorrect Code:
-    ```python
-        # Assume that fucntions 'Add' , 'AddTwo' and 'isEven' have the above mentioned declaration
-        $a = 15
-        $b = 20
-        
-        CALL Add ( $a )
-        
-        CALL Add 20
-        
-        $c = CALL Add $a
-        
-        CALL AddTwo $a $b
-        
-        OUT CALL isEven $a 
-    ```
+      ```python
+          # Assume that fucntions 'Add' , 'AddTwo' and 'isEven' have the above mentioned declaration
+          $a = 15
+          $b = 20
+
+          CALL Add ( $a )
+
+          CALL Add 20
+
+          $c = CALL Add $a
+
+          CALL AddTwo $a $b
+
+          OUT CALL isEven $a 
+      ```
     ##### Correct Code:
-    ```python
-        # Assume that fucntions 'Add' , 'AddTwo' and 'isEven' have the above mentioned declaration
-        $a = 15
-        $b = 20
-        
-        CALL Add $a 
-        
-        $a = 20
-        CALL Add $a
-        
-        CALL Add $a -> $c
-        
-        CALL Add $a $b -> $c
-        
-        CALL isEven $a -> $c
-        OUT $c
-    ```
+      ```python
+          # Assume that fucntions 'Add' , 'AddTwo' and 'isEven' have the above mentioned declaration
+          $a = 15
+          $b = 20
+
+          CALL Add $a 
+
+          $a = 20
+          CALL Add $a
+
+          CALL Add $a -> $c
+
+          CALL Add $a $b -> $c
+
+          CALL isEven $a -> $c
+          OUT $c
+      ```
 
 ## Operators Available on `int` and `double` values
 * `+`  -> for addition
