@@ -148,7 +148,9 @@ In Lipi the words need to carefully spaced out.
           $i = $i + 1
           EXIT ( $j > 200 )
       }
-      
+  ```
+  #### Nested Loop
+  ```python 
       $d = 0
       $f = 0
       LOOP ( $d < 3 )
