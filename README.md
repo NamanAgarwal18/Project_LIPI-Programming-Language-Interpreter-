@@ -387,3 +387,4 @@
 * Download the [Lipi Programming Language Interpreter.py](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Lipi%20Programming%20Language%20Interpreter.py) file and save it in a folder.
 * Create a **Lipi Program** in a textfile and save it in the same folder with **.txt** extention.
 * Run the **"Lipi Programming Language Interpreter.py"** file and input the name of **Lipi Program** file **.txt** extention and hhit enter.
+##### Note: Make sure you have the latest **Python** in your system.
