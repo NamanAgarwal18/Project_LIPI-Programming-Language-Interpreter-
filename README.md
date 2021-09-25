@@ -2,24 +2,26 @@
 
 ## Description
 **Lipi** is a small programming language created by Naman Agarwal. It supports various fundamental programming concepts such as variable-declaration, function calling, conditional statements, loops, proper order of operations, and recursion. Along with the language there is a **Python** based interpreter to run the code written in Lipi. <br>
-The execution of a program in Lipi starts with the main function which does not return anything. <br>
-Lipi does not use semi-colons to terminate statements, instead it relies on the fact that each new line is the start of a new statement and end of the previous. <br>
-In Lipi the words need to carefully spaced out. 
+* The execution of a program in Lipi starts with the main function which does not return anything. 
+* Lipi does not use *semi-colons* to terminate statements, instead it relies on the fact that each new line is the start of a new statement and end of the previous. 
+* In Lipi the words need to carefully spaced out. 
+* Lipi supports recursion.
+* A variable is only available from inside the function it is created.
 
 ## Language Grammar
 ### 1. Variable Declaration:
 * There is no need to specify the data type.
-* All variables start with a ```$``` symbol. 
+* All variables start with a `$` symbol. 
 * A variable can hold a ```int```, ```double``` or a ```string```.
 * There are no boolean values in Lipi, so ```True``` and ```False``` are represented as ```1``` and ```0``` respectively.
-  #### Grammer
+  #### Grammer:
   ```enbf
     variable-declaration  ::=  variable-name  assignment-operator  variable-body
     variable-name  ::=  identifier
     assignment-operator  ::=  "="
     variable-body  ::=  constant  |  expression  |  comparison
   ```
-  #### Wrong Declaration
+  #### Wrong Declaration:
   ```python
       int $number1 = 20
       number2 = 20
@@ -27,7 +29,7 @@ In Lipi the words need to carefully spaced out.
       $boolValue = True
       $number3 = $name*($number1+30)
   ```
-  #### Right Declaration
+  #### Right Declaration:
   ```python
       $number2 = 20
       $name = "Naman"
@@ -37,18 +39,18 @@ In Lipi the words need to carefully spaced out.
   ```
 ### 2. Input / Output Statements:
 * We use `IN` keyword to input data and `OUT` keyword to display the data.
-   #### 1. Input - `IN`
-     * The input statement can take in multiple inputs at a time seperated by a space-bar.
+   #### 1. Input - `IN`:
+     * The input statement can take in multiple inputs at a time seperated by a *space-bar*.
      * The input statement can also display a statement before inputting the data.
-   #### 2. Output - `OUT`
+   #### 2. Output - `OUT`:
      * The output statement can display multiple statements and variables at a time seperated by a space bar.
-   #### Incorrect Code
+   #### Incorrect Code:
    ```python
        IN Enter the $a variable $a
 
        OUT The value of $a is: $a
    ```
-   #### Correct Code
+   #### Correct Code:
    ```python
        IN "Enter the $a variable" $a
        IN "Enter the value of $a: " $a ", the value of $b:" $b "and the value of $c:" $c
@@ -60,7 +62,7 @@ In Lipi the words need to carefully spaced out.
 * The conditional statement uses keyword `IS`
 * The `IS` statement block has an option to be followed by `NONE` statement block acting as an `else` statement. 
 * `IS` statement expects a 0 or 1 input in the form of a condition within the brackets. 
-  #### Incorrect Code
+  #### Incorrect Code:
   ```python
       $a = 20
       $b = 30
@@ -81,7 +83,7 @@ In Lipi the words need to carefully spaced out.
           OUT "True"
       }
   ```
-  #### Correct Code
+  #### Correct Code:
   ```python
       $a = 20
       $b = 30
@@ -112,7 +114,7 @@ In Lipi the words need to carefully spaced out.
 * The Loop in Lipi is like `while` loop in other programming language.
 * You can use an `EXIT` statement to break out of the loop if a certain condition is fulfilled.
 * You can easily create nested loops to do your work.
-  #### Incorrect Code
+  #### Incorrect Code:
   ```python
       LOOP ( $i > 30 )
       {
@@ -131,7 +133,7 @@ In Lipi the words need to carefully spaced out.
           }
        }
   ```
-  #### Correct Code
+  #### Correct Code:
   ```python
       $i = 0
       LOOP ( $i > 30 )
@@ -149,7 +151,7 @@ In Lipi the words need to carefully spaced out.
           EXIT ( $j > 200 )
       }
   ```
-  #### Nested Loop
+  #### Nested Loop:
   ```python 
       $d = 0
       $f = 0
@@ -166,6 +168,99 @@ In Lipi the words need to carefully spaced out.
       }
       OUT "Exitted $d:" $d "and $e:" $e "and $f:" $f 
   ```
+### 5.Functions:
+* Lipi supports fucntions and by extention recursion.
+  #### Fucntion Declaration: 
+  * A function declaration starts with the `FN` keyword.
+  * A fucntion does not have to start with a `$` symbol.
+  * A function can have as many parameters as you want.
+  * All the parameters can be written after the fucntion name seperated by a *space-bar*.
+  * A function can return by using `RET` keyword.
+  * `RET` can be used with a condition or without a condition.
+    ##### Incorrect Code:
+    ```python
+        FN Add ( $n )
+        {
+            $n = $n + $n
+            OUT $n
+        }
+        
+        FN AddTwo $n $m
+        {
+            $a = $n + $m
+            RET
+        }
+        
+        FN isEven $a
+        {
+            IS ( $a % 2 <> 0 )
+            {
+                RET "Even"
+            }
+            RET "ODD"
+        }
+    ```
+    ##### Correct Code:
+    ```python
+        FN Add $n
+        {
+            $n = $n + $n
+            OUT $n
+        }
+        
+        FN AddTwo $n $m
+        {
+            $a = $n + $m
+            RET $a
+        }
+        
+        FN isEven $a
+        {
+            $even = "Even"
+            $odd = "Odd"
+            RET ( $a % 2 <> 0 ) $even
+            RET $odd
+        }
+    ```
+  #### Fucntion Calling: 
+    * A function can be called using `CALL` keyword.
+    * The number of arguments given should be the same as the parameters required.
+    * If the fucntion returns something then it is mandatory to give a variable to store the returned value.
+    * You can still give a returning variable even if the fucntion doesn't return anything. In this case the returning variable would store 1 if the fucntion was run successfully.
+    ##### Incorrect Code:
+    ```python
+        # Assume that fucntions 'Add' , 'AddTwo' and 'isEven' have the above mentioned declaration
+        $a = 15
+        $b = 20
+        
+        CALL Add ( $a )
+        
+        CALL Add 20
+        
+        $c = CALL Add $a
+        
+        CALL AddTwo $a $b
+        
+        OUT CALL isEven $a 
+    ```
+    ##### Correct Code:
+    ```python
+        # Assume that fucntions 'Add' , 'AddTwo' and 'isEven' have the above mentioned declaration
+        $a = 15
+        $b = 20
+        
+        CALL Add $a 
+        
+        $a = 20
+        CALL Add $a
+        
+        CALL Add $a -> $c
+        
+        CALL Add $a $b -> $c
+        
+        CALL isEven $a -> $c
+        OUT $c
+    ```
 
 ## Operators Available on `int` and `double` values
 * `+`  -> for addition
