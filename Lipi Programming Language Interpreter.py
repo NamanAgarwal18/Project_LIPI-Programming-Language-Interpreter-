@@ -189,8 +189,22 @@ def applyOp(a, b, op):
     if op == '-': 
         if isNumber(str(a)) and isNumber(str(b)):
             return a - b
+        elif  isNumber(str(a)) and a > 0 and a<=len(str(b)):
+            temp = ""
+            j = 0
+            while j < int(a):
+                temp += str(b)[j]
+                j+=1
+            return temp
+        elif isNumber(str(b)) and b > 0 and b<=len(str(a)):
+            temp = ""
+            j = len(str(a)) - int(b)
+            while j < len(str(a)):
+                temp += str(a)[j]
+                j+=1
+            return temp
         else:
-            raise Exception("Error at " + str(lineNo) + " '-' operator not applicable on strings")
+            raise Exception("Error at " + str(lineNo) + " '-' operator not used correctly on strings")
     if op == '*':
         if isNumber(str(b)):
             return a * b
@@ -199,6 +213,27 @@ def applyOp(a, b, op):
     if op == '/': 
         if isNumber(str(a)) and isNumber(str(b)):
             return a / b
+        elif isNumber(str(a)) and a > 0:
+            if a >= len(str(b)):
+                return 0
+            else:
+                temp = ""
+                j = int(a)
+                while j < len(str(b)):
+                    temp = temp + str(b)[j]
+                    j=j+1
+                return temp
+        elif isNumber(str(b)) and b > 0:
+            if b >= len(str(a)):
+                return 0
+            else:
+                temp = ""
+                i = len(str(a)) - b
+                j = 0
+                while j < i:
+                    temp = temp + str(a)[j]
+                    j=j+1
+                return temp
         else:
             raise Exception("Error at " + str(lineNo) + " '/' operator not applicable on strings")
     if op == "//": 
@@ -452,6 +487,7 @@ def evaluate(tokens):
 #To replace all the variables with their values and create a infix equation
 def createBool(words,obj,leave):
     global lineNo
+    #print(words)
     variables = obj.variables
     temp = ""
     shouldVariable = True
@@ -682,6 +718,7 @@ def processLoop(words,obj,code):
             lineNo = start-1
             #print(lineNo)
             text = createBool(words, obj,1)
+            
             result = evaluate(text)
             if result == 1:
                 result = True
@@ -939,7 +976,7 @@ def startExecution(mainStart,mainEnd,code,obj):
 def main():
     global lineNo, time
     file = input("Enter the file name: ")
-    #file = "testingLoopsAndExit.txt"
+    #file = "Palindrome.txt"
     file = open(file, "r")
     code = file.readlines()
     file.close()
