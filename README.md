@@ -1,5 +1,10 @@
 # Lipi Programming Language
 
+
+<a href="https://www.youtube.com/watch?v=MEdDwKtX_3g" target="_blank"><img src="http://img.youtube.com/vi/MEdDwKtX_3g/hqdefault.jpg" alt="IMAGE ALT TEXT HERE" width="500" height="375" border="20" />
+
+[<h3>Click Here To Watch The Video Demonstration</h3>](https://www.youtube.com/watch?v=MEdDwKtX_3g)
+
 ## Description
 **Lipi** is a small programming language created by Naman Agarwal. It supports various fundamental programming concepts such as variable-declaration, function calling, conditional statements, loops, proper order of operations, and recursion. Along with the language there is a **Python** based interpreter to run the code written in Lipi. <br>
 * The execution of a program in Lipi starts with the main function which does not return anything. 
