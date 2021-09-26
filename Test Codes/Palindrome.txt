@@ -1,0 +1,25 @@
+# Check if a string is Palindrome or not
+FN Palindrome $name
+{
+	$ans = "Yes"
+	LOOP ( $name >< 0 )
+	{
+		$left = 1 - $name
+		$right = $name - 1
+		$name = 1 / $name
+		$name = $name / 1
+		IS ( $left ][ $right )
+		{
+			$ans = "No"
+		}
+		EXIT ( $left ][ $right )
+	}
+	RET $ans
+}
+
+FN main
+{
+	IN "Enter a String:" $name
+	CALL Palindrome $name -> $ans
+	OUT $ans
+}
