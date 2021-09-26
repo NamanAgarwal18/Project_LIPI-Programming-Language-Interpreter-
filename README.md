@@ -665,6 +665,43 @@ Writing the fibonacci series till a given index is a very popular basic coding p
      
    </details>
  
+### Palindrome: 
+Checking if a string is palindrome or not is a good program to check basic string manipulation. It also uses the features provided by the Lipi language very well in accessing the charecters in sting and in removing the characters from the string. 
+ 
+     <details><summary><b> Click Here To See The Code</b></summary>
+     
+   ```python
+        # Check if a string is Palindrome or not
+        FN Palindrome $name
+        {
+            $ans = "Yes"
+            LOOP ( $name >< 0 )
+            {
+                $left = 1 - $name
+                $right = $name - 1
+                $name = 1 / $name
+                $name = $name / 1
+                IS ( $left ][ $right )
+                {
+                    $ans = "No"
+                }
+                EXIT ( $left ][ $right )
+            }
+            RET $ans
+        }
+
+        FN main
+        {
+            IN "Enter a String:" $name
+            CALL Palindrome $name -> $ans
+            OUT $ans
+        }
+   ```
+#### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Palindrome.txt) to see the code. 
+#### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Palindrome.PNG) to see the output.
+     
+   </details>
+       
 </details>
      
 ## Instruction To Run The Code:
