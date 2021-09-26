@@ -298,7 +298,9 @@
 <details><summary><b> Click Here To See <i><ins>Operators Available</ins></i></b></summary>  
   
 * `+`  -> for concatenating strings
+* `-`  -> for getting a few elements from the front or the ack of the string
 * `*`  -> for concatenating same string multiple times
+* `/`  -> for removing a few elements from the front or the ack of the string
 
   ```python
       $a = "naman"
@@ -312,6 +314,18 @@
       
       $e = $a * 3
       # $e = "namannamannaman" 
+  
+      $f = 2 - $a
+      # $f = "na"
+  
+      $g = $a - 2
+      # $g = "an"
+  
+      $h = 2 / $a
+      # $h = "man"
+  
+      $i = $a / 2
+      # $i = "nam"
   ```
   </details>
   
