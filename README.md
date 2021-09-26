@@ -668,7 +668,7 @@ Writing the fibonacci series till a given index is a very popular basic coding p
 ### Palindrome: 
 Checking if a string is palindrome or not is a good program to check basic string manipulation. It also uses the features provided by the Lipi language very well in accessing the charecters in sting and in removing the characters from the string. 
  
-     <details><summary><b> Click Here To See The Code</b></summary>
+   <details><summary><b> Click Here To See The Code</b></summary>
      
    ```python
         # Check if a string is Palindrome or not
