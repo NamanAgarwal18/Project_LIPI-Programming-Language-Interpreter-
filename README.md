@@ -288,7 +288,7 @@
   
       ##### Incorrect Code:
       ```python
-          # Assume that fucntions 'Add' , 'AddTwo' and 'isEven' have the above mentioned declaration
+          # Assume that fucntions 'Add' , 'AddTwo' , 'isEven' and 'takeArray' have the above mentioned declaration
           $a = 15
           $b = 20
 
@@ -306,7 +306,7 @@
       ```
       ##### Correct Code:
       ```python
-          # Assume that fucntions 'Add' , 'AddTwo' and 'isEven' have the above mentioned declaration
+          # Assume that fucntions 'Add' , 'AddTwo' , 'isEven' and 'takeArray' have the above mentioned declaration
           $a = 15
           $b = 20
 
@@ -771,7 +771,142 @@ Checking if a string is palindrome or not is a good program to check basic strin
 #### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Palindrome.PNG) to see the output.
      
    </details>
-       
+  
+### Search An Element: (*Normal*, *Sorting* and **Binary Search** using **Recursion**)
+Searching an element in an array is a good example to understand how arrays work. I have implimented a normal search that checks all the elements of the array and then i have implimented a **Sorting Algorithm** and then applied **Binary Search** using **Recusrion** to find the same element. This program shows how arrays can be created, passed through a function and how the array handles recursion.
+     
+     <details><summary><b> Click Here To See The Code</b></summary>
+     
+   ```python
+        # Normal Search Algorithm
+        FN normalSearch $array-len $ele
+        {
+            OUT "Normal Search for element"
+            $i = 0
+            LOOP ( $i < $array-len )
+            {
+                EXIT ( $array[$i] <> $ele )
+                $i = $i + 1
+            }
+            IS ( $i <> $array-len )
+            {
+                OUT $ele "not found"
+            }
+            NONE
+            {
+                OUT $ele "found at the" $i "th position"
+            }
+        }
+
+        # Normal Sorting algorithm
+        FN sort $array-len
+        {
+            $i = 0
+            LOOP ( $i < $array-len )
+            {
+                $pos = $i
+                $j = $i + 1
+                LOOP ( $j < $array-len )
+                {
+                    IS ( $array[$j] < $array[$pos] )
+                    {
+                        $pos = $j
+                    }
+                    $j = $j + 1
+                }
+                IS ( $pos >< $i )
+                {
+                    $temp = $array[$i]
+                    $array[$i] = $array[$pos]
+                    $array[$pos] = $temp
+                }
+                $i = $i + 1
+            }
+        }
+
+        # Printing the array
+        FN printArray $array-len
+        {
+            $i = 0
+            $text = "Array"
+            $text = $text + " "
+            LOOP ( $i < $array-len )
+            {
+                $text = $text + $array[$i] + ","
+                $i = $i + 1
+            }
+            OUT $text
+        }
+
+        # Binary search algorithm 
+        FN binarySearch $array-len $start $end $ele
+        {
+            IS ( $start >= $array-len )
+            {
+                OUT $ele "not found"
+            }
+            NONE
+            {
+                IS ( $start >= $end )
+                  {
+                      IS ( $array[$start] <> $ele )
+                      {
+                          OUT $ele "found at" $start "position"
+                      }
+                      NONE
+                      {
+                          OUT $ele "not found"
+                      }
+                }
+                NONE
+                {
+                    $mid = ( $start + $end ) // 2
+                    IS ( $array[$mid] <> $ele )
+                    {
+                        OUT $ele "found at" $mid "position"
+                    }
+                    NONE
+                    {
+                        IS ( $array[$mid] > $ele )
+                        {
+                            $mid = $mid - 1
+                            CALL binarySearch $array-len $start $mid $ele
+                        }
+                        NONE
+                        {
+                            $mid = $mid + 1
+                            CALL binarySearch $array-len $mid $end $ele
+                        }
+                    }
+                }
+            }
+        }
+
+        FN main
+        {
+            IN "Enter the number of elements:" $n
+            ARR $array $n
+            $i = 0
+            LOOP ( $i < $n )
+            {
+                $a = $i + 1
+                OUT "Enter the" $a "th element"
+                IN $array[$i]
+                $i = $i + 1
+            }
+            CALL printArray $array-len
+            IN "Enter the element to be searched:" $ele
+            CALL normalSearch $array-len $ele
+            CALL sort $array-len
+            CALL printArray $array-len
+            CALL binarySearch $array-len 0 $array-len $ele
+        }
+   ```
+#### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Search%20An%20Element.txt) to see the code. 
+#### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Search%20An%20Element.PNG) to see the output.
+     
+   </details>
+     
 </details>
      
 ## Instruction To Run The Code:
