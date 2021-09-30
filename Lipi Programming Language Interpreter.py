@@ -3,6 +3,7 @@
     @author: Naman Agarwal
 """
 from datetime import datetime
+import random, string
 
 
 #####################   Some global initialisations  ##########################
@@ -24,6 +25,9 @@ functionStack = []
 
 #Time to determine timeout
 time = None
+
+# declare array elements
+arrayElements = { }
 
 ##############################  Class Function  ###############################
 
@@ -50,6 +54,10 @@ class function:
 
 #################################  Checkers  ##################################
 
+def generateRandomVariable():
+    x = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase) for _ in range(5))
+    return x
+
 def isParenthesisWord(word):
     li = ["LOOP", "IS", "NONE"]
     if word in li:
@@ -60,7 +68,15 @@ def isVariable(word):
     if len(word)==0:
         return False
     if word[0] == "$":
-        return True
+        j = 0
+        while j < len(word) and word[j]!="-":
+            j+=1
+        if j == len(word):
+            return True
+        elif j + 4 == len(word) and word[j+1] == 'l' and word[j+2] == 'e' and word[j+3] == 'n':
+            return True
+        else:
+            return False
     return False
 
 def isOperator(word):
@@ -82,7 +98,7 @@ def isBracket(word):
     return False
 
 def isKeyword(word):
-    li = ["IN","OUT", "IS", "NONE", "LOOP", "EXIT", "CALL", "RET"]
+    li = ["IN","OUT", "IS", "NONE", "LOOP", "EXIT", "CALL", "RET", "ARR"]
     if word in li:
         return True
     return False
@@ -106,6 +122,86 @@ def isNumber(word):
             return False
         count +=1
     return True
+
+def isArray(word,obj,ret):
+    left=""
+    middle=""
+    j = 0
+    while j<len(word) and word[j]!="[":
+        left = left + word[j]
+        j+=1
+    #print(left,middle)
+    if j>=len(word) or word[j] != "[":
+        return False
+    j+=1
+    
+    while j < len(word) and word[j]!="]":
+        middle = middle + word[j]
+        j = j + 1
+    #print(left,middle)
+    if j>=len(word) or word[j] != "]" or j+1 != len(word):
+        return False
+    if not isVariable(left):
+        return False
+    temp = left + "-len"
+    if isVariable(middle):
+        if middle in obj.variables.keys():
+            if temp in obj.variables.keys():
+                temp = obj.variables.get(temp)
+                j = 0
+                left = ""
+                while j<len(temp) and temp[j]!="-":
+                    left = left + temp[j]
+                    j+=1
+                temp = left + "-len"
+                if int(arrayElements.get(temp)) > int(obj.variables.get(middle)) and isNumber(obj.variables.get(middle)):
+                    left = left + "-" + str(int(obj.variables.get(middle)))
+                else:
+                    raise Exception("Error at " + str(lineNo) + " -> Array not found")
+            else:
+                raise Exception("Error at " + str(lineNo) + " -> Index out of bounds")
+        else:
+            return False
+        if ret:
+            #print(left)
+            return left
+        else:
+            return True
+    elif isNumber(middle):
+        if int(middle) >= 0:
+            if temp in obj.variables.keys():
+                temp = obj.variables.get(temp)
+                j = 0
+                left = ""
+                while j<len(temp) and temp[j]!="-":
+                    left = left + temp[j]
+                    j+=1
+                temp = left + "-len"
+                if arrayElements.get(temp) > int(middle):
+                    left = left + "-" + str(int(middle))
+            else:
+                raise Exception("Error at " + str(lineNo) + " -> Index out of bounds")
+            
+            #print(left,middle)
+        else:
+            return False
+        if ret:
+            #print(left)
+            return left
+        else:
+            return True
+    else:
+        return False
+    
+def isArrayLen(word):
+    length = len(word)
+    if length < 5:
+        return False
+    
+    if word[0]=="$" and word[length-1] == "n" and word[length-2] == "e" and word[length-3] == "l" and word[length-4] == "-":
+        return True
+    return False
+
 
 ###########################  Initiation of the Code ##########################
 
@@ -496,11 +592,23 @@ def createBool(words,obj,leave):
             continue
         if isVariable(words[i]) and shouldVariable:
             shouldVariable = False
-            if words[i] in variables.keys():
-                if isNumber(str(variables.get(words[i]))):
-                    temp = temp + str(variables.get(words[i])) + " "
+            wording = words[i]
+            if isArray(word = wording, obj = obj, ret = False):
+                wording = isArray(word = wording, obj = obj, ret = True)
+                if wording in arrayElements.keys():
+                    if isNumber(str(arrayElements.get(wording))):
+                        temp = temp + str(arrayElements.get(wording)) + " "
+                    else:
+                        temp = temp + "\"" + str(arrayElements.get(wording)) + "\" "
                 else:
-                    temp = temp + "\"" + str(variables.get(words[i])) + "\" "
+                    raise Exception("Error at " + str(lineNo) + " -> Variable " + words[i] + " not found") 
+            elif wording in variables.keys():
+                if isNumber(str(variables.get(wording))):
+                    temp = temp + str(variables.get(wording)) + " "
+                elif isArrayLen(wording):
+                    temp = temp + str(arrayElements.get(variables.get(wording))) + " "
+                else:
+                    temp = temp + "\"" + str(variables.get(wording)) + "\" "
             else:
                raise Exception("Error at " + str(lineNo) + " -> Variable " + words[i] + " not found") 
         elif isOperator(words[i]) and not shouldVariable:
@@ -518,17 +626,60 @@ def createBool(words,obj,leave):
     #print(temp)
     return temp
 
+def resizeArray(word,obj,value):
+    value = int(value)
+    if value < 0:
+        raise Exception("Error at " + str(lineNo) + " -> Array size cant be negative")
+    if word in obj.variables.keys():
+        prev = obj.variables.get(word)
+        word = prev
+        prev = int(arrayElements.get(prev))
+        
+        wording = ""
+        j = 0
+        while j < len(word) and word[j]!="-":
+            wording+=word[j]
+            j+=1
+        if prev == value:
+            return
+        elif prev < value:
+            j = prev
+            arrayElements[word] = value
+            while j < value:
+                text = wording + "-" + str(j)
+                arrayElements[text] = 0
+                j+=1
+        else:
+            j = value
+            arrayElements[word] = value
+            while j < prev:
+                text = wording + "-" + str(j)
+                arrayElements.pop(text)
+                j+=1
+            
+    else:
+        raise Exception("Error at " + str(lineNo) + " -> No such array exists")
+
 #To put value into a variable
 def addVariable(words,obj):
     global lineNo
     variables = obj.variables
+    
     name = words[0]
+    #print(name)
     if words[1] != '=':
         raise Exception("Error at " + str(lineNo) + " -> Equality not found")
     temp = createBool(words,obj,0)
     #print("temp -> ",temp)
     value = evaluate(temp)
-    variables[name] = value
+    if isArray(word = name, obj = obj, ret = False):
+        name = isArray(word = name, obj = obj, ret = True)
+        arrayElements[name] = value
+        return
+    if isNumber(value) and isArrayLen(words[0]):
+        resizeArray(words[0],obj,value)
+    else:
+        variables[name] = value
     
 #############################  Process Keywords  ##############################
 
@@ -551,6 +702,9 @@ def processKeyword(words,obj,code):
         return True
     elif words[0] == "RET":
         return processRet(words, obj, code)
+    elif words[0] == "ARR":
+        processArr(words,obj,code)
+        return True
     else:
         raise Exception("Error at " + str(lineNo) + " -> Invalid Syntax " + words[0])
 
@@ -578,7 +732,14 @@ def processIO(words,obj):
                 print(text, end=" ")
             elif isVariable(words[i]):
                 value = input()
-                variables[words[i]] = value
+                wording = words[i]
+                if isArray(word = wording, obj = obj, ret = False):
+                    wording = isArray(word = wording, obj = obj, ret = True)
+                    arrayElements[wording] = value
+                elif isNumber(value) and isArrayLen(wording):
+                    resizeArray(wording,obj,value)
+                else:
+                    variables[wording] = value
             else:
                 raise Exception("Error at " + str(lineNo) + " -> Invalid Syntax " + words[i])
             i+=1
@@ -594,8 +755,17 @@ def processIO(words,obj):
             if len(word)==0:
                 continue
             if i!=0:
-                if isVariable(word) and not isParanthesis and (word in variables.keys()):
-                    text = text + str(variables.get(word)) + " "
+                if isVariable(word) and not isParanthesis: 
+                    wording = word
+                    if isArray(word = wording, obj = obj, ret = False):
+                        wording = isArray(word = wording, obj = obj, ret = True)
+                        text = text + str(arrayElements.get(wording)) + " "
+                    elif (wording in variables.keys() and not isArrayLen(wording)):
+                        text = text + str(variables.get(wording)) + " "
+                    elif (wording in variables.keys() and isArrayLen(wording)):
+                        text = text + str(arrayElements.get(variables.get(wording))) + " "
+                    else:
+                        raise Exception("Error at " + str(lineNo) + " -> Invalid Syntax " + words[i])
                     
                 elif isVariable(word) and isParanthesis:
                     wording = word
@@ -762,15 +932,38 @@ def processFucntion(words,obj,code):
         wordFunction = wordFunction.split(" ")
         argumentNeeded = len(wordFunction) - 2
         argumentGiving = len(words) - 2
+        #print(wordFunction)
+        #print(words)
         #print(argumentGiving,argumentNeeded)
         if argumentGiving < argumentNeeded:
             raise Exception("Error at " + str(lineNo) + " -> Function '" + words[2]+"' needs "+argumentNeeded+" arguments but only "+argumentGiving+"arguments given")
         elif argumentGiving == argumentNeeded or (argumentGiving == argumentNeeded + 2 and words[len(words)-2]=="->"):
             list = []
             for i in range(argumentNeeded):
-                if words[2+i] in obj.variables.keys():
-                    pair  = ( wordFunction[2+i] , obj.variables.get(words[2+i]) )
+                if isVariable(words[2+i]):
+                    if words[2+i] in obj.variables.keys() and not isArrayLen(words[2+i]):
+                        pair  = ( wordFunction[2+i] , obj.variables.get(words[2+i]) )
+                        list.append( pair )
+                    elif isArray(word = words[2+i], obj=obj, ret = False):
+                        wording = isArray(word = words[2+i], obj=obj, ret = True)
+                        if wording in arrayElements.keys():
+                            pair  = ( wordFunction[2+i] , arrayElements.get(wording) )
+                            list.append( pair )
+                        else:
+                            raise Exception("Error at " + str(lineNo) + " -> Invalid index for thee array " + words[i+2])
+                    elif isArrayLen(words[2+i]):
+                        if isArrayLen(wordFunction[2+i]):
+                            pair  = ( wordFunction[2+i] , obj.variables.get(words[2+i]) )
+                            list.append( pair )
+                        else:
+                            pair  = ( wordFunction[2+i] , arrayElements.get(obj.variables.get(words[2+i])) )
+                            list.append( pair )
+                elif isNumber(words[2+i]):
+                    pair  = ( wordFunction[2+i] , words[2+i] )
                     list.append( pair )
+                else:
+                    raise Exception("Error at " + str(lineNo) + " -> Invalid argument to the '" + words[2]+"' fucntion call")
+                    
             FunStart = functions[words[1]]
             FunEnd = FunStart[1]
             FunStart = FunStart[0]
@@ -778,7 +971,7 @@ def processFucntion(words,obj,code):
             functionStack.append(obj)
             if len(functionStack) > 31:
                 #Stack Full after 30 recursive calls
-                raise Exception("Error at -> Stack Overflow (Only 31 fucntion calls at a time allowed)")
+                raise Exception("Stack Overflow (Only 31 fucntion calls at a time allowed)")
             rememberOldLine = lineNo
             returning = startExecution(mainStart = FunStart, mainEnd = FunEnd-1, code = code, obj = objectNew)
             lineNo = rememberOldLine
@@ -790,7 +983,14 @@ def processFucntion(words,obj,code):
                 elif returning == False:
                     returning = 0
                 if isVariable(words[len(words)-1]):
-                    obj.variables[words[len(words)-1]] = returning
+                    if isArray(word = words[len(words) -1], obj = obj, ret = False):
+                        wording = isArray(word = words[len(words) -1], obj = obj, ret = True)
+                        if wording in arrayElements.keys():
+                            arrayElements[wording] = returning
+                        else:
+                            raise Exception("Error at -> " + lineNo +" Array index out of bounds " + words[len(words)-1])
+                    else:
+                        obj.variables[words[len(words)-1]] = returning
                 else:
                     raise Exception("Error at " + str(lineNo) + " -> "+ words[len(words)-1]+" not a variable")
                 
@@ -803,11 +1003,13 @@ def processFucntion(words,obj,code):
 #Process the 'RET' keyword
 def processRet(words,obj,code):
     global lineNo
+    #print(words)
     if words[1] == "(":
         text = createBool(words= words, obj = obj, leave = 2)
         result = evaluate(text)
+        #print(result)
         if result == 1:
-            if words[len(words)-1] in obj.variables.keys():
+            if words[len(words)-1] in obj.variables.keys() and not isArrayLen(words[len(words)-1]):
                 return obj.variables.get(words[len(words)-1])
             elif isNumber(words[len(words)-1]):
                 #print(words[len(words)-1])
@@ -856,9 +1058,14 @@ def processRet(words,obj,code):
                     raise Exception("Error at " + str(lineNo) + " -> Number '"+words[1]+"' doesn't exist")
                 #print(val)
                 return val
+            elif isArray(word = words[len(words)-1], obj = obj, ret = False):
+                word = isArray(word = words[len(words)-1], obj = obj, ret = True)
+                return arrayElements.get(word)
+            else:
+                raise Exception("Error at " + str(lineNo) + " -> Variable '"+words[len(words)-1]+"' doesn't exist")
         elif result == 0:
             return None
-    elif words[1] in obj.variables.keys():
+    elif words[1] in obj.variables.keys() and not isArrayLen(words[1]):
         return obj.variables.get(words[1])
     elif isNumber(words[1]):
         i = 0
@@ -899,9 +1106,46 @@ def processRet(words,obj,code):
             raise Exception("Error at " + str(lineNo) + " -> Number '"+words[1]+"' doesn't exist")
         #print(val)
         return val
+    elif isArray(word = words[1], obj = obj, ret = False):
+        word = isArray(word = words[1], obj = obj, ret = True)
+        return arrayElements.get(word)
     else:
         raise Exception("Error at " + str(lineNo) + " -> Variable '"+words[1]+"' doesn't exist")
-    
+ 
+def processArr(words,obj,code):
+    if (len(words)<3):
+        raise Exception("Error at " + str(lineNo) + " -> Invalid Syntax " + words[0])
+    if isVariable(words[1]):
+        if isNumber(words[2]) and int(words[2])>0:
+            j = 0
+            text = words[1] + "-len"
+            inmemory = generateRandomVariable()
+            texting = "$" + inmemory + "-len"
+            arrayElements[texting] = int(words[2])
+            obj.variables[text] = texting
+            while j < int(words[2]):
+                text = "$" + inmemory + "-" + str(j)
+                arrayElements[text] = 0
+                j+=1
+        elif isVariable(words[2]) and words[2] in  obj.variables.keys():
+            num = int(obj.variables.get(words[2]))
+            j = 0
+            text = words[1] + "-len"
+            inmemory = generateRandomVariable()
+            texting = "$" + inmemory + "-len"
+            arrayElements[texting] = int(num)
+            obj.variables[text] = texting
+            while j < int(num):
+                text = "$" + inmemory + "-" + str(j)
+                arrayElements[text] = 0
+                j+=1
+        else:
+            raise Exception("Error at " + str(lineNo) + " -> Invalid Length of Array ")
+    else:
+        raise Exception("Error at " + str(lineNo) + " -> Invalid Array Name ")
+    ##print("variables -> ", obj.variables, "\nArray Elements -> ",arrayElements)
+        
+ 
 #############################  Execution Module  ##############################
 
 '''
@@ -949,6 +1193,10 @@ def startExecution(mainStart,mainEnd,code,obj):
     while lineNo!=mainEnd:
         
         notExitFromLoop = interpret(line,obj,code)
+        #print("variables -> ", obj.variables, "\nArray Elements -> ",arrayElements)
+        #print()
+        #print()
+        
 
         if len(line) > 3 and line[0]=="R" and line[1]=="E" and line[2]=="T":
             if notExitFromLoop !=None:
@@ -976,7 +1224,7 @@ def startExecution(mainStart,mainEnd,code,obj):
 def main():
     global lineNo, time
     file = input("Enter the file name: ")
-    #file = "Palindrome.txt"
+    #file = "Normal Search.txt"
     file = open(file, "r")
     code = file.readlines()
     file.close()
@@ -1064,3 +1312,4 @@ try:
     inp = input()
 except Exception as e:
     print("###########################################################\n",e)
+    inp = input()
