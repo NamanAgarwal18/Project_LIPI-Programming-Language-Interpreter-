@@ -12,6 +12,8 @@
 * In Lipi the words need to carefully spaced out. 
 * Lipi supports recursion.
 * A variable is only available from inside the function it is created.
+* Lipi can take use of arrays and in Lipi you also have the option to resize array dynamically.
+* In Lipi arrays are passed by reference to the fucntions.
 
 ## Language Grammar
 <details><summary><b> Click Here To See <i><ins>Language Grammar </ins></i></b></summary>
@@ -168,7 +170,44 @@
       }
       OUT "Exitted $d:" $d "and $e:" $e "and $f:" $f 
   ```
-### 5.Functions:
+
+### 5. Arrays:
+* An array variable also starts like any other variable (i.e. with a `$` symbol)
+* To declare an array of a fixed size we use the keyword `ARR`
+* Any element in the array can be acessed in the same way you access in other laguages like C++.
+* Each array creates another variable (for array named `$arr` the variable formed => `$arr-len`) that is used in various ways like:
+  * To get the length of the array
+  * To pass the array into the fucntion
+  * To resize the array
+
+  #### Incorrect Code:
+  ```python
+      ARR $array[20]
+  
+      $a = 5
+      $array[0] = $array[a] + 1
+  
+      OUT "Length of array" $array.len
+  ```
+  #### Correct Code:
+  ```python
+      ARR $array 20
+      # OR
+      $a = 20
+      ARR $array $a
+  
+      $a = 5
+      $array[0] = $array[$a] + 1
+  
+      OUT "Length of array" $array-len
+  
+      # To resize the array
+      $array-len = $array-len + 5
+      $array-len = 5
+  ```
+  
+  
+### 6. Functions:
 * Lipi supports fucntions and by extention recursion.
   #### Fucntion Declaration: 
   * A function declaration starts with the `FN` keyword.
@@ -399,6 +438,7 @@
 * `FN` -> Keyword used to declare and define a fucntion.
 * `RET` -> Keyword used to return a value from the function.
 * `CALL` -> Keyword used to call a function.
+* `ARR` -> Keyword used to declare an array of a given size.
   
 </details>
 
