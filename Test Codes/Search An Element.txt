@@ -1,0 +1,123 @@
+# Normal Search Algorithm
+FN normalSearch $array-len $ele
+{
+	OUT "Normal Search for element"
+	$i = 0
+	LOOP ( $i < $array-len )
+	{
+		EXIT ( $array[$i] <> $ele )
+		$i = $i + 1
+	}
+	IS ( $i <> $array-len )
+	{
+		OUT $ele "not found"
+	}
+	NONE
+	{
+		OUT $ele "found at the" $i "th position"
+	}
+}
+
+# Normal Sorting algorithm
+FN sort $array-len
+{
+	$i = 0
+	LOOP ( $i < $array-len )
+	{
+		$pos = $i
+		$j = $i + 1
+		LOOP ( $j < $array-len )
+		{
+			IS ( $array[$j] < $array[$pos] )
+			{
+				$pos = $j
+			}
+			$j = $j + 1
+		}
+		IS ( $pos >< $i )
+		{
+			$temp = $array[$i]
+			$array[$i] = $array[$pos]
+			$array[$pos] = $temp
+		}
+		$i = $i + 1
+	}
+}
+
+# Printing the array
+FN printArray $array-len
+{
+	$i = 0
+	$text = "Array"
+	$text = $text + " "
+	LOOP ( $i < $array-len )
+	{
+		$text = $text + $array[$i] + ","
+		$i = $i + 1
+	}
+	OUT $text
+}
+
+# Binary search algorithm 
+FN binarySearch $array-len $start $end $ele
+{
+	IS ( $start >= $array-len )
+	{
+		OUT $ele "not found"
+	}
+	NONE
+	{
+		IS ( $start >= $end )
+			{
+			IS ( $array[$start] <> $ele )
+			{
+				OUT $ele "found at" $start "position"
+			}
+			NONE
+			{
+				OUT $ele "not found"
+			}
+		}
+		NONE
+		{
+			$mid = ( $start + $end ) // 2
+			IS ( $array[$mid] <> $ele )
+			{
+				OUT $ele "found at" $mid "position"
+			}
+			NONE
+			{
+				IS ( $array[$mid] > $ele )
+				{
+					$mid = $mid - 1
+					CALL binarySearch $array-len $start $mid $ele
+				}
+				NONE
+				{
+					$mid = $mid + 1
+					CALL binarySearch $array-len $mid $end $ele
+				}
+			}
+		}
+	}
+}
+
+FN main
+{
+	IN "Enter the number of elements:" $n
+	ARR $array $n
+	$i = 0
+	LOOP ( $i < $n )
+	{
+		$a = $i + 1
+		OUT "Enter the" $a "th element"
+		IN $array[$i]
+		$i = $i + 1
+	}
+	CALL printArray $array-len
+	IN "Enter the element to be searched:" $ele
+	CALL normalSearch $array-len $ele
+	CALL sort $array-len
+	CALL printArray $array-len
+	CALL binarySearch $array-len 0 $array-len $ele
+}
