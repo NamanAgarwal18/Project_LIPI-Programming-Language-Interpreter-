@@ -214,6 +214,8 @@
   * A fucntion does not have to start with a `$` symbol.
   * A function can have as many parameters as you want.
   * All the parameters can be written after the fucntion name seperated by a *space-bar*.
+  * A function can take an array as a parameter.
+  * The array is passed by reference and all the other variables are passed by value.
   * A function can return by using `RET` keyword.
   * `RET` can be used with a condition or without a condition.
     ##### Incorrect Code:
@@ -238,6 +240,13 @@
             }
             RET "ODD"
         }
+  
+        FN takeArray $array[] $size
+        {
+            OUT "Size is:" $size
+            OUT "length of array is:" $array-len
+            OUT "First element is:" $array[0]
+        }
     ```
     ##### Correct Code:
     ```python
@@ -260,12 +269,23 @@
             RET ( $a % 2 <> 0 ) $even
             RET $odd
         }
+  
+        FN takeArray $array-len $size
+        {
+            OUT "Size is" $size
+            OUT "length of array is" $array-len
+            OUT "First element is:" $array[0]
+        }
     ```
   #### Fucntion Calling: 
     * A function can be called using `CALL` keyword.
     * The number of arguments given should be the same as the parameters required.
     * If the fucntion returns something then it is mandatory to give a variable to store the returned value.
     * You can still give a returning variable even if the fucntion doesn't return anything. In this case the returning variable would store 1 if the fucntion was run successfully.
+    * While send the *'len'* variable of the array into a fucntion then:
+      * If the recieving variable also has an *'len'* then the array reference is passed.
+      * If the recieving variable doesn't have an *'len'* then the size of the array is passed.
+  
       ##### Incorrect Code:
       ```python
           # Assume that fucntions 'Add' , 'AddTwo' and 'isEven' have the above mentioned declaration
@@ -281,6 +301,8 @@
           CALL AddTwo $a $b
 
           OUT CALL isEven $a 
+  
+          CALL takeArray $array $array-len
       ```
       ##### Correct Code:
       ```python
@@ -299,6 +321,9 @@
 
           CALL isEven $a -> $c
           OUT $c
+  
+          ARR $array 5
+          CALL takeArray $array-len $array-len
       ```
 </details>
   
