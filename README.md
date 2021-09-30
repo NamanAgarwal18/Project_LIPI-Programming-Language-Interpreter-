@@ -772,10 +772,11 @@ Checking if a string is palindrome or not is a good program to check basic strin
      
    </details>
   
-### Search An Element: (*Normal*, *Sorting* and **Binary Search** using **Recursion**)
+### Search An Element: *(**Normal Search**, **Sorting** and **Binary Search** using **Recursion**)*
 Searching an element in an array is a good example to understand how arrays work. I have implimented a normal search that checks all the elements of the array and then i have implimented a **Sorting Algorithm** and then applied **Binary Search** using **Recusrion** to find the same element. This program shows how arrays can be created, passed through a function and how the array handles recursion.
      
-     <details><summary><b> Click Here To See The Code</b></summary>
+     
+   <details><summary><b> Click Here To See The Code</b></summary>
      
    ```python
         # Normal Search Algorithm
