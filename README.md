@@ -917,14 +917,10 @@ Here I have implimented various sorting techniques that helped me debug my inter
      * Quick Sort (**Recursively**)
      * Radix Sort
      * Heap Sort (**Recursively**)
-     
-     
-     <details><summary><b> Click Here To See The Code</b></summary>
-       
+          
 #### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Sorting%20Algorithms.txt) to see the code. 
 #### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Sorting%20Algorithms.PNG) to see the output.
      
-     </details>
        
 </details>
      
