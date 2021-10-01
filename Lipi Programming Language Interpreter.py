@@ -159,7 +159,7 @@ def isArray(word,obj,ret):
                 else:
                     raise Exception("Error at " + str(lineNo) + " -> Array not found")
             else:
-                raise Exception("Error at " + str(lineNo) + " -> Index out of bounds")
+                raise Exception("Error at " + str(lineNo) + " -> Index out of bounds" + word)
         else:
             return False
         if ret:
@@ -595,6 +595,7 @@ def createBool(words,obj,leave):
             wording = words[i]
             if isArray(word = wording, obj = obj, ret = False):
                 wording = isArray(word = wording, obj = obj, ret = True)
+                #print(wording)
                 if wording in arrayElements.keys():
                     if isNumber(str(arrayElements.get(wording))):
                         temp = temp + str(arrayElements.get(wording)) + " "
@@ -1116,7 +1117,7 @@ def processArr(words,obj,code):
     if (len(words)<3):
         raise Exception("Error at " + str(lineNo) + " -> Invalid Syntax " + words[0])
     if isVariable(words[1]):
-        if isNumber(words[2]) and int(words[2])>0:
+        if isNumber(words[2]) and int(words[2])>=0:
             j = 0
             text = words[1] + "-len"
             inmemory = generateRandomVariable()
@@ -1224,7 +1225,7 @@ def startExecution(mainStart,mainEnd,code,obj):
 def main():
     global lineNo, time
     file = input("Enter the file name: ")
-    #file = "Normal Search.txt"
+    #file = "Sorting ALgorithms.txt"
     file = open(file, "r")
     code = file.readlines()
     file.close()
