@@ -910,6 +910,7 @@ Searching an element in an array is a good example to understand how arrays work
  
 ### Sorting an Array:
 Here I have implimented various sorting techniques that helped me debug my interpreter and refine my language even further. It also helped me learn different sorting algorithms and helped me be proficient in **Lipi Programing Language**. The Sorting algorithms implimented are:
+ 
      * Selection Sort
      * Bubble Sort
      * Murge Sort (**Recursively**)
