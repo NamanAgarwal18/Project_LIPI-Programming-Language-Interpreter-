@@ -1,0 +1,374 @@
+# Inputting the array
+FN inputArray $array-len
+{
+	$yes = "yes"
+	$i = 0
+	LOOP ( $yes [] "YES" )
+	{
+		IN "Enter an element:" $a
+		$array-len = $array-len + 1
+		$array[$i] = $a
+		$i = $i + 1
+		IN "Do you want to enter another number" $yes
+	}
+}
+
+# Printing the array
+FN printArray $array-len
+{
+	$i = 0
+	$text = "Array"
+	$text = $text + " "
+	LOOP ( $i < $array-len )
+	{
+		$text = $text + $array[$i] + ","
+		$i = $i + 1
+	}
+	OUT $text
+}
+
+# Selection Sort algorithm
+FN selectionSort $array-len
+{
+	$i = 0
+	LOOP ( $i < $array-len )
+	{
+		$pos = $i
+		$j = $i + 1
+		LOOP ( $j < $array-len )
+		{
+			IS ( $array[$j] < $array[$pos] )
+			{
+				$pos = $j
+			}
+			$j = $j + 1
+		}
+		IS ( $pos >< $i )
+		{
+			$temp = $array[$i]
+			$array[$i] = $array[$pos]
+			$array[$pos] = $temp
+		}
+		$i = $i + 1
+	}
+}
+
+# Bubble Sorting algorithm
+FN bubbleSort $array-len
+{
+	$i = 1
+	LOOP ( $i < $array-len )
+	{
+		$till = $array-len - $i
+		$j = 0
+		LOOP ( $j < $till )
+		{
+			$jplus = $j + 1
+			IS ( $array[$j] > $array[$jplus] )
+			{
+				$temp = $array[$j]
+				$array[$j] = $array[$jplus]
+				$array[$jplus] = $temp
+			}
+			$j = $j + 1
+		}
+		$i = $i + 1
+	}
+}
+
+# Merge Sort algorithm
+FN mergeSort $array-len $start $end
+{
+	# OUT "start" $start "end" $end
+	IS ( $start < $end )
+	{
+		$mid = ( ( $end - $start ) // 2 ) + $start
+		$midplus = $mid + 1
+		CALL mergeSort $array-len $start $mid
+		# OUT "From" $start $mid
+		CALL mergeSort $array-len $midplus $end
+		# OUT "From" $midplus $end
+		CALL merge $array-len $start $mid $end
+	}
+}
+
+FN merge $array-len $start $mid $end
+{
+	$leftArrSize = $mid - $start + 1
+	$rightArrSize = $end - $mid
+	ARR $leftArr $leftArrSize
+	ARR $rightArr $rightArrSize
+	$i = 0
+	LOOP ( $i < $leftArrSize )
+	{
+		# OUT $i
+		$pos = $i + $start
+		# OUT $pos
+		$leftArr[$i] = $array[$pos]
+		$i = $i + 1
+	}
+	# OUT "out"
+	$i = 0
+	LOOP ( $i < $rightArrSize )
+	{
+		# OUT $i
+		$pos = $i + $mid + 1
+		# OUT $pos
+		$rightArr[$i] = $array[$pos]
+		$i = $i + 1
+		# OUT $i
+	}
+	$left = 0
+	$right = 0
+	$main = $start
+	# CALL printArray $leftArr-len
+	# CALL printArray $rightArr-len
+	LOOP ( ( $left < $leftArrSize ) .. ( $right < $rightArrSize ) )
+	{
+		IS ( $leftArr[$left] <= $rightArr[$right] )
+		{
+			$array[$main] = $leftArr[$left]
+			$left = $left + 1
+		}
+		NONE
+		{
+			$array[$main] = $rightArr[$right]
+			$right = $right + 1
+		}
+		$main = $main + 1
+	}
+	LOOP ( $left < $leftArrSize )
+	{
+		$array[$main] = $leftArr[$left]
+		$left = $left + 1
+		$main = $main + 1
+	}
+	LOOP ( $right < $rightArrSize )
+	{
+		$array[$main] = $rightArr[$right]
+		$right = $right + 1
+		$main = $main + 1
+	}
+	$rightArr-len = 0
+	$leftArr-len = 0
+	# CALL printArray $array-len
+}
+
+# Insertion sort algorithm
+FN insertionSort $array-len
+{
+	$i = 1
+	LOOP ( $i < $array-len )
+	{
+		$j = $i - 1
+		$temp = $array[$i]
+		LOOP ( ( $j >= 0 ) )
+		{
+			EXIT ( $array[$j] < $temp )
+			$jplus = $j + 1
+			$array[$jplus] = $array[$j]
+			$j = $j - 1
+		}
+		$jplus = $j + 1
+		$array[$jplus] = $temp
+		$i = $i + 1
+	}
+}
+
+# Quick Sort Algorithm
+FN quickSort $array-len $low $high
+{
+	IS ( $low < $high )
+	{
+		CALL partition $array-len $low $high -> $pi
+		$piplus = $pi + 1
+		$piminus = $pi - 1
+		CALL quickSort $array-len $low $piminus
+		CALL quickSort $array-len $piplus $high
+	}
+}
+
+FN partition $array-len $low $high
+{
+	# Pivot is last element
+	$pivot = $array[$high]
+	$i = $low - 1
+	$j = $low
+	$highminus = $high - 1
+	LOOP ( $j <= $highminus )
+	{
+		IS ( $array[$j] < $pivot )
+		{
+			$i = $i + 1
+			$temp = $array[$i]
+			$array[$i] = $array[$j]
+			$array[$j] = $temp
+		}
+		$j = $j + 1
+	}
+	$iplus = $i + 1
+	$temp = $array[$iplus]
+	$array[$iplus] = $array[$high]
+	$array[$high] = $temp
+	RET $iplus
+}
+
+# Radix Sort algorithm
+FN radixSort $array-len
+{
+	$max = $array[0]
+	$i = 0
+	LOOP ( $i < $array-len )
+	{
+		IS ( $array[$i] > $max )
+		{
+			$max = $array[$i]
+		}
+		$i = $i + 1
+	}
+	$exp = 1
+	LOOP ( ( $max // $exp ) > 0 )
+	{
+		CALL count $array-len $exp
+		$exp = $exp * 10
+	}
+}
+
+FN count $array-len $exp
+{
+	# A function to do counting sort of array[] according to the digit represented by exp.
+	$len = $array-len
+	ARR $output $len
+	ARR $count 10
+	$i = 0
+	LOOP ( $i < $array-len )
+	{
+		$temp = $array[$i] // $exp
+		$temp = $temp % 10
+		$count[$temp] = $count[$temp] + 1
+		$i = $i + 1
+	}
+	$i = 1
+	LOOP ( $i < 10 )
+	{
+		$iminus = $i - 1
+		$count[$i] = $count[$i] + $count[$iminus]
+		$i = $i + 1
+	}
+	$i = $array-len - 1
+	LOOP ( $i >= 0 )
+	{
+		$temp = $array[$i] // $exp
+		$temp = $temp % 10
+		$temp = $count[$temp] - 1
+		$output[$temp] = $array[$i]
+		$temp = $array[$i] // $exp
+		$temp = $temp % 10
+		$count[$temp] = $count[$temp] - 1
+		$i = $i - 1
+	}
+	$i = 0
+	LOOP ( $i < $array-len )
+	{
+		$array[$i] = $output[$i]
+		$i = $i + 1
+	}
+	$output-len = 0
+	$count-len = 0
+}
+
+# Heap sort algorithm
+FN heapSort $array-len
+{
+	$i = ( $array-len // 2 ) - 1
+	LOOP ( $i >= 0 )
+	{
+		CALL heapify $array-len $array-len $i
+		$i = $i - 1
+	}
+	OUT "Heap Build:"
+	CALL printArray $array-len
+	$i = $array-len - 1
+	LOOP ( $i > 0 )
+	{
+		$temp = $array[0]
+		$array[0] = $array[$i]
+		$array[$i] = $temp
+		CALL heapify $array-len $i 0
+		$i = $i - 1
+	}
+}
+
+FN heapify $array-len $n $i
+{
+	$largest = $i
+	$l = ( 2 * $i ) + 1
+	$r = ( 2 * $i ) + 2
+	IS ( $l < $n )
+	{
+		IS ( $array[$l] > $array[$largest] )
+		{
+			$largest = $l
+		}
+	}
+	IS ( $r < $n )
+	{
+		IS ( $array[$r] > $array[$largest] )
+		{
+			$largest = $r
+		}
+	}
+	IS ( $largest >< $i )
+	{
+		$temp = $array[$i]
+		$array[$i] = $array[$largest]
+		$array[$largest] = $temp
+		CALL heapify $array-len $n $largest
+	}
+}
+
+FN main
+{
+	ARR $array 0
+	CALL inputArray $array-len
+	CALL printArray $array-len
+	OUT "[1] Selection Sort"
+	OUT "[2] Bubble Sort"
+	OUT "[3] Merge Sort"
+	OUT "[4] Insertion Sort"
+	OUT "[5] Quick Sort"
+	OUT "[6] Radix Sort"
+	OUT "[7] Heap Sort"
+	IN $ans
+	IS ( $ans <> 1 )
+	{
+		CALL selectionSort $array-len
+	}
+	IS ( $ans <> 2 )
+	{
+		CALL bubbleSort $array-len
+	}
+	IS ( $ans <> 3 )
+	{
+		$len = $array-len - 1
+		CALL mergeSort $array-len 0 $len
+	}
+	IS ( $ans <> 4 )
+	{
+		CALL insertionSort $array-len
+	}
+	IS ( $ans <> 5 )
+	{
+		$len = $array-len - 1
+		CALL quickSort $array-len 0 $len
+	}
+	IS ( $ans <> 6 )
+	{
+		CALL radixSort $array-len
+	}
+	IS ( $ans <> 7 )
+	{
+		CALL heapSort $array-len
+	}
+	CALL printArray $array-len
+}
