@@ -907,7 +907,25 @@ Searching an element in an array is a good example to understand how arrays work
 #### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Search%20An%20Element.PNG) to see the output.
      
    </details>
+ 
+### Sorting an Array:
+Here I have implimented various sorting techniques that helped me debug my interpreter and refine my language even further. It also helped me learn different sorting algorithms and helped me be proficient in **Lipi Programing Language**. The Sorting algorithms implimented are:
+     * Selection Sort
+     * Bubble Sort
+     * Murge Sort (**Recursively**)
+     * Insertion Sort
+     * Quick Sort (**Recursively**)
+     * Radix Sort
+     * Heap Sort (**Recursively**)
      
+     
+     <details><summary><b> Click Here To See The Code</b></summary>
+       
+#### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Sorting%20Algorithms.txt) to see the code. 
+#### [Click Here](https://github.com/NamanAgarwal18/Project_Lipi-Programming-Language/blob/main/Test%20Codes/Sorting%20Algorithms.PNG) to see the output.
+     
+     </details>
+       
 </details>
      
 ## Instruction To Run The Code:
